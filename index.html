@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>sen 開業準備の進捗</title>
+<style>
+  :root{
+    --bg:#f7f4ef; --card:#ffffff; --ink:#2b2a28; --sub:#6b665e; --line:#e4ded4;
+    --accent:#7a8b6f; --accent-soft:#e7ece2; --warn:#b5763a; --warn-soft:#f6ebdd;
+    --done:#9aa59a; --todo:#d9d2c6; --ms:#2b2a28;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif;
+    line-height:1.7;font-size:15px}
+  .wrap{max-width:980px;margin:0 auto;padding:28px 18px 64px}
+  header .brand{font-size:13px;letter-spacing:.2em;color:var(--sub)}
+  header h1{font-size:26px;margin:4px 0 2px;font-weight:700}
+  header .tag{color:var(--sub);font-size:13px}
+  .updated{display:inline-block;margin-top:10px;font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:999px;padding:2px 10px;background:var(--card)}
+  h2{font-size:18px;margin:36px 0 12px;padding-left:10px;border-left:4px solid var(--accent)}
+  .grid{display:grid;gap:12px}
+  .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  @media (max-width:720px){.g3,.g2{grid-template-columns:minmax(0,1fr)}}
+  .card{min-width:0;overflow-wrap:anywhere}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .kpi .label{font-size:12px;color:var(--sub)}
+  .kpi .value{font-size:22px;font-weight:700;margin-top:2px}
+  .kpi .note{font-size:12px;color:var(--sub);margin-top:2px}
+  .status{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;margin-right:6px;vertical-align:1px}
+  .s-done{background:#e9ece9;color:#55605a} .s-doing{background:var(--accent-soft);color:#4d5f44}
+  .s-todo{background:#efe9df;color:#7a6f60} .s-warn{background:var(--warn-soft);color:#8a5524}
+  ul.clean{list-style:none;margin:0;padding:0}
+  ul.clean li{padding:8px 0;border-bottom:1px dashed var(--line)}
+  ul.clean li:last-child{border-bottom:none}
+  .who{font-size:12px;color:var(--sub);margin-left:4px}
+  .callout{background:var(--warn-soft);border:1px solid #ecd8bf;border-radius:10px;padding:12px 16px;font-size:14px}
+  /* gantt */
+  .gantt{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow-x:auto}
+  .grow{display:grid;grid-template-columns:200px repeat(6,minmax(70px,1fr));min-width:640px;border-bottom:1px solid var(--line)}
+  .grow:last-child{border-bottom:none}
+  .grow.head{background:#faf8f4;font-size:12px;color:var(--sub);font-weight:700}
+  .grow.sec{background:#fbfaf7;font-size:12px;font-weight:700;color:var(--accent)}
+  .grow.sec .gname{grid-column:1/-1}
+  .gname{padding:7px 10px;font-size:13px}
+  .gcell{padding:7px 4px;text-align:center}
+  .bars{grid-column:2/-1;display:grid;grid-template-columns:repeat(6,1fr);align-items:center;position:relative;
+    background-image:linear-gradient(to right,var(--line) 1px,transparent 1px);background-size:calc(100%/6) 100%}
+  .bar{height:16px;border-radius:4px;margin:0 4px}
+  .b-done{background:var(--done)} .b-doing{background:var(--accent)} .b-todo{background:var(--todo)}
+  .b-ms{height:auto;background:none;text-align:center;font-size:12px;font-weight:700;color:var(--ms)}
+  .legend{font-size:12px;color:var(--sub);margin-top:8px}
+  .legend span{display:inline-block;width:14px;height:10px;border-radius:2px;vertical-align:0;margin:0 4px 0 10px}
+  table.t{width:100%;border-collapse:collapse;font-size:14px}
+  table.t th,table.t td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+  table.t th{font-size:12px;color:var(--sub);font-weight:700;background:#faf8f4}
+  .num{text-align:right;white-space:nowrap}
+  .small{font-size:12px;color:var(--sub)}
+  footer{margin-top:40px;font-size:12px;color:var(--sub)}
+  a{color:#4d5f44}
+  .private{border-left:3px solid var(--warn);padding-left:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">sen ｜ Enjoy Forever ／ 千年先もきれいに</div>
+  <h1>開業準備の進捗</h1>
+  <div class="tag">有田川町のまつげ・アイブロウ＋シミケアサロン</div>
+  <div class="updated">最終更新 2026年11月15日</div>
+</header>
+
+<h2>いまの状況</h2>
+<div class="grid g3">
+  <div class="card kpi">
+    <div class="label">開業の目標</div>
+    <div class="value">2027年4月</div>
+    <div class="note" id="cd-open">（2026-11-15 に夏から前倒し）</div>
+  </div>
+  <div class="card kpi">
+    <div class="label">物件の引き渡し</div>
+    <div class="value">2027年2月中</div>
+    <div class="note">物件は決定。契約開始日を交渉中</div>
+  </div>
+  <div class="card kpi">
+    <div class="label">一番の山場</div>
+    <div class="value">11月末〜12月前半</div>
+    <div class="note">契約条件と保健所の相談を固める</div>
+  </div>
+</div>
+
+<div class="grid g3" style="margin-top:12px">
+  <div class="card">
+    <div><span class="status s-doing">進行中</span><b>物件</b></div>
+    <p class="small" style="margin:6px 0 0">有田川町内の1LDKに決定。大家さんのサロン利用はOK。駐車場は2台の見込み。前金を払って契約開始を後ろにずらせるか交渉中。</p>
+  </div>
+  <div class="card">
+    <div><span class="status s-warn">見直し</span><b>お金・補助金</b></div>
+    <p class="small" style="margin:6px 0 0">4月開業に変えたので、町の起業支援補助金（2027年度の募集）は使いにくい。どの補助金・融資を使うかを12月に商工会と決め直す。</p>
+  </div>
+  <div class="card">
+    <div><span class="status s-todo">これから</span><b>保健所・手続き</b></div>
+    <p class="small" style="margin:6px 0 0">まつげエクステは美容所の開設届が必要。図面を持って保健所へ事前相談（施術する部屋の広さ・洗い場・消毒・換気）。</p>
+  </div>
+</div>
+
+<h2>直近2週間でやること（〜11月末）</h2>
+<div class="card">
+<ul class="clean">
+  <li><span class="status s-doing">進行中</span>不動産会社と契約条件を詰める：契約開始日（目標 2/1）、前金の扱い（家賃に充当されるか・キャンセル時に戻るか）、部屋番号、駐車場2台目<span class="who">経営管理</span></li>
+  <li><span class="status s-todo">未</span>前金を払って部屋を押さえる<span class="who">経営管理</span></li>
+  <li><span class="status s-todo">未</span>図面を持って保健所へ事前相談（美容所として使えるか）<span class="who">代表＋経営管理</span></li>
+  <li><span class="status s-todo">未</span>施術メニュー・営業日・営業時間を決める<span class="who">代表</span></li>
+  <li><span class="status s-todo">未</span>4月開業での補助金・融資の使い方を商工会に相談（持続化補助金の締切は 12/15）<span class="who">経営管理</span></li>
+</ul>
+</div>
+
+<h2>4月開業までの流れ</h2>
+<div class="gantt">
+  <div class="grow head"><div class="gname">やること</div><div class="gcell">11月</div><div class="gcell">12月</div><div class="gcell">1月</div><div class="gcell">2月</div><div class="gcell">3月</div><div class="gcell">4月</div></div>
+
+  <div class="grow sec"><div class="gname">物件</div></div>
+  <div class="grow"><div class="gname">条件交渉・前金で押さえる</div><div class="bars"><div class="bar b-doing" style="grid-column:1/2"></div></div></div>
+  <div class="grow"><div class="gname">賃貸契約</div><div class="bars"><div class="bar b-todo" style="grid-column:2/3"></div></div></div>
+  <div class="grow"><div class="gname">引き渡し・室内の確認と撮影</div><div class="bars"><div class="bar b-ms" style="grid-column:4/5">◆ 引き渡し</div></div></div>
+
+  <div class="grow sec"><div class="gname">保健所</div></div>
+  <div class="grow"><div class="gname">図面で事前相談</div><div class="bars"><div class="bar b-todo" style="grid-column:1/3"></div></div></div>
+  <div class="grow"><div class="gname">美容所の開設届・検査</div><div class="bars"><div class="bar b-todo" style="grid-column:5/6"></div></div></div>
+
+  <div class="grow sec"><div class="gname">お金</div></div>
+  <div class="grow"><div class="gname">補助金の方針を決め直す</div><div class="bars"><div class="bar b-todo" style="grid-column:1/3"></div></div></div>
+  <div class="grow"><div class="gname">見積もり・必要資金の総額</div><div class="bars"><div class="bar b-todo" style="grid-column:2/3"></div></div></div>
+  <div class="grow"><div class="gname">融資の相談〜入金（使う場合）</div><div class="bars"><div class="bar b-todo" style="grid-column:2/4"></div></div></div>
+
+  <div class="grow sec"><div class="gname">店づくり</div></div>
+  <div class="grow"><div class="gname">レイアウト・工事内容・業者予約</div><div class="bars"><div class="bar b-todo" style="grid-column:3/4"></div></div></div>
+  <div class="grow"><div class="gname">チェア・照明・用品の選定と発注</div><div class="bars"><div class="bar b-todo" style="grid-column:3/5"></div></div></div>
+  <div class="grow"><div class="gname">電気・水道・Wi-Fi・保険</div><div class="bars"><div class="bar b-todo" style="grid-column:3/5"></div></div></div>
+  <div class="grow"><div class="gname">工事・設置・搬入</div><div class="bars"><div class="bar b-todo" style="grid-column:4/6"></div></div></div>
+
+  <div class="grow sec"><div class="gname">お客様を迎える準備</div></div>
+  <div class="grow"><div class="gname">店名・メニュー・料金</div><div class="bars"><div class="bar b-todo" style="grid-column:1/4"></div></div></div>
+  <div class="grow"><div class="gname">予約方法・LINE・Instagram・同意書</div><div class="bars"><div class="bar b-todo" style="grid-column:3/5"></div></div></div>
+  <div class="grow"><div class="gname">開業の告知・予約受付・モニター施術</div><div class="bars"><div class="bar b-todo" style="grid-column:5/6"></div></div></div>
+  <div class="grow"><div class="gname">開業・開業届・青色申告の届出</div><div class="bars"><div class="bar b-ms" style="grid-column:6/7">🎉 開業</div></div></div>
+</div>
+<div class="legend">凡例：<span style="background:var(--accent)"></span>進行中<span style="background:var(--todo)"></span>これから<span style="background:var(--done)"></span>完了　◆＝節目</div>
+
+<h2>月ごとのやること</h2>
+<div class="card" style="padding:0;overflow-x:auto">
+<table class="t">
+  <tr><th style="width:120px">時期</th><th>やること</th><th style="width:220px">完了の目安</th></tr>
+  <tr><td>11月末</td><td>契約開始日・前金・部屋番号・駐車場を詰め、前金で部屋を押さえる。保健所へ図面で事前相談。メニュー・営業日・時間を決める</td><td>部屋を押さえ、契約開始日が決まる</td></tr>
+  <tr><td>12月前半</td><td>契約（契約日・鍵渡し日を確定）。保健所の指摘から必要な工事を決める。補助金の使い方を商工会と決める</td><td>物件が確定し、必要な工事が分かる</td></tr>
+  <tr><td>12月中旬〜末</td><td>内装・設備・備品の見積もり。初期費用と運転資金の総額。融資を使うなら相談・申込（審査1〜1.5か月）</td><td>必要資金と調達方法が決まる</td></tr>
+  <tr><td>1月前半</td><td>レイアウト・工事内容を確定し業者を3月頭で予約。備品を選んで発注（チェアは注文から約2週間→引き渡し後に届くよう2月前半に注文）。Wi-Fiを申し込む</td><td>引き渡し後の作業が具体化する</td></tr>
+  <tr><td>1月後半</td><td>店名・メニュー・料金を確定。LINE・Instagram・予約方法、カウンセリング票・同意書、会計方法を準備</td><td>お客様を受け入れる仕組みが整う</td></tr>
+  <tr><td>2月前半</td><td>電気・水道・ネットを引き渡し日から使えるよう手配。店舗用の火災保険・賠償保険。工事・搬入日程を確定</td><td>引き渡し後の予定が組める</td></tr>
+  <tr><td>2月中</td><td>引き渡し。室内の傷・設備を確認して撮影。採寸・最終確認</td><td>店づくりに着手できる</td></tr>
+  <tr><td>3月前半</td><td>工事・設備設置・搬入。美容所の開設届を出し、検査日を決める</td><td>店の形ができる</td></tr>
+  <tr><td>3月後半</td><td>保健所の検査。動線確認・練習・モニター施術。開業告知と予約受付開始</td><td>検査に通り、予約を受けられる</td></tr>
+  <tr><td>4月</td><td>開業。開業届（開業から1か月以内）・青色申告承認申請（2か月以内）</td><td>営業開始</td></tr>
+</table>
+</div>
+
+<h2>決まったこと／まだ決まっていないこと</h2>
+<div class="grid g2">
+  <div class="card">
+    <b>決まったこと</b>
+    <ul class="clean">
+      <li><span class="status s-done">済</span>商工会に相談（4月・7月）。補助金の選択肢と注意点を確認</li>
+      <li><span class="status s-done">済</span>屋号は「sen」（仮）</li>
+      <li><span class="status s-done">済</span>物件を決定（11/15）。大家さんのサロン利用はOK</li>
+      <li><span class="status s-done">済</span>駐車場：1台は契約可、2台目も同じ料金で借りられる見込み</li>
+      <li><span class="status s-done">済</span>目標：2月中に引き渡し・4月に開業</li>
+      <li><span class="status s-done">済</span>施術チェア：電動リクライニングチェア T01 の前提（下の「お店のイメージ」）</li>
+    </ul>
+  </div>
+  <div class="card">
+    <b>まだ決まっていないこと</b>
+    <ul class="clean">
+      <li><span class="status s-warn">要交渉</span>契約開始日（どこまで後ろにずらせるか）と前金の扱い</li>
+      <li><span class="status s-todo">未</span>保健所の事前相談（施術する部屋の広さ・設備）</li>
+      <li><span class="status s-todo">未</span>補助金・融資の使い方（4月開業に合わせて再設計）</li>
+      <li><span class="status s-todo">未</span>メニュー・料金、営業日・時間</li>
+      <li><span class="status s-todo">未</span>予約システム・レジ・会計ソフト・Wi-Fi（ドコモ home 5G か モバレコAir が候補）</li>
+      <li><span class="status s-todo">未</span>協業（シミケア）を新しい物件でどう進めるか</li>
+    </ul>
+  </div>
+</div>
+
+<h2>お店のイメージ（決まりつつあること）</h2>
+<div class="grid g2">
+  <div class="card">
+    <b>施術チェア</b>
+    <p class="small" style="margin:6px 0">電動垂直昇降リクライニングチェア T01 アドバンス（7beauty）。ベッドではなくチェアで施術する前提。</p>
+    <table class="t">
+      <tr><th style="width:110px">価格</th><td>96,800円（税込）。送料・組立設置は別</td></tr>
+      <tr><th>大きさ</th><td>通常 幅84×奥行89cm／ほぼフラット時 長さ約180cm</td></tr>
+      <tr><th>置き場所の目安</th><td>フラット時の長さ180cm＋頭側の作業スペース約70cm、左右に各60cm前後 → 約2.5m×2.0m</td></tr>
+      <tr><th>電源</th><td>電動（AC100V・180W）。チェアの近くにコンセントが要る</td></tr>
+      <tr><th>重さ・納期</th><td>約66kg。注文から約2週間。大型品なので搬入経路（玄関ドア幅）の確認が必要</td></tr>
+      <tr><th>色</th><td>オフホワイト／ブラウン／グレージュ／ブラック（幅が9cm細い「スリム」もあり）</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <b>内装のアイデア</b>
+    <ul class="clean">
+      <li><b>床</b>：グレーのモルタル調の床をそのまま活かす。チェアの下には傷防止のマットを敷く</li>
+      <li><b>巾木</b>：木目の巾木に白のマスキングテープを貼って、白とグレーで統一。剥がせるので退去時に戻せる（長期用・壁紙用のテープを選び、目立たない所で試してから）</li>
+      <li><b>間仕切り</b>：白い紙製の蛇腹パーテーション（高さ180cm×長さ300cm・約3.2万円）や白いカーテンで、施術スペースとキッチン・入口側を分ける。保健所の「作業室と待合の区切り」として認められるかは事前相談で確認</li>
+      <li><b>全体</b>：白・ベージュ・グレーのやわらかい雰囲気（参考：白カーテン＋布をかけたカウンター）</li>
+    </ul>
+  </div>
+</div>
+
+<h2>チェアの買い先の比較</h2>
+<div class="card" style="padding:0;overflow-x:auto">
+<table class="t">
+  <tr><th style="width:170px">買い先</th><th>候補と価格（税込）</th><th style="width:230px">実物を見られる場所</th></tr>
+  <tr><td><b>SEVEN BEAUTY</b><br><span class="small">7beauty.jp／東京・台東区のメーカー兼通販</span></td>
+      <td><b>T01 アドバンス 96,800円</b>（昇降 最大20cm・3モーター・メモリー機能）。スリム版あり。送料・組立設置は別</td>
+      <td>大阪にストアがあるという情報あり（要確認）。機器営業部 03-5812-4455（平日9:30〜18:30）で、大阪で座れるか確認する</td></tr>
+  <tr><td><b>ビューティガレージ</b><br><span class="small">プロ向け通販・会員価格</span></td>
+      <td>SHIFFON LUXE 96,800円（昇降18cm）／DITE 141,900円（昇降約15cm）／シエロplus 82,500円・SHIFFON 72,380円・SHIFFON Jr 71,280円・SISTA neo 65,780円（いずれも昇降なし）</td>
+      <td>大阪ショールーム（大阪市西区新町・10〜18時・予約制・駐車場なし）。展示機種は要問い合わせ</td></tr>
+  <tr><td><b>タカラベルモント</b><br><span class="small">国内大手メーカー</span></td>
+      <td>アイラッシュチェア「Riche」など。価格は販売店の見積もり</td>
+      <td>大阪・長堀橋のショールーム</td></tr>
+  <tr><td><b>和歌山の美容ディーラー</b></td>
+      <td>ネットでは、和歌山でまつげ用チェアを扱う店は見つからなかった</td>
+      <td>いまの商材（グルー・まつげ）の仕入れ先に、チェアも取り寄せられるか聞く</td></tr>
+</table>
+</div>
+<p class="small">比べると：同じ96,800円ならT01の方が昇降幅が大きい（20cm と 18cm）。昇降があると施術者の腰の負担が減る。昇降なしでよければ約7万円から。買う前に大阪で一度座って、高さとリモコンの使いやすさを確かめるのがおすすめ。</p>
+
+<h2>Wi-Fi（置くだけWi-Fi）の比較</h2>
+<div class="card" style="padding:0;overflow-x:auto">
+<table class="t">
+  <tr><th style="width:150px">サービス</th><th>月額（税込）</th><th>キャンペーン（2026年11月時点）</th><th style="width:120px">2年の実質月額</th><th>ポイント</th></tr>
+  <tr><td><b>ドコモ home 5G</b></td><td>5,280円・端末実質0円・解約金0円</td><td>dポイント15,000pt（乗り換えなら追加あり）</td><td class="num">約4,400〜4,700円</td><td>速さの評価が高い。登録した住所でしか使えない</td></tr>
+  <tr><td><b>ソフトバンクエアー</b></td><td>4,950円（25か月目〜5,368円）※12/1から各330円値上げ</td><td>最大45,000円（年齢・機種など条件あり）</td><td class="num">約3,400円</td><td>登録した住所でしか使えない</td></tr>
+  <tr><td><b>モバレコAir</b>（ソフトバンク回線）</td><td>初月1,320円→3,080円→4,180円（13か月目〜）</td><td>最大39,500円（12か月目ごろ受け取り）</td><td class="num">約1,900円</td><td>回線はソフトバンクエアーと同じで安い。受け取り手続きを忘れないこと</td></tr>
+  <tr><td><b>とくとくBB ホームWi-Fi</b>（WiMAX）</td><td>390円（〜5か月）→4,763円・端末代924円×36回</td><td>30,000円（優待コード入力）</td><td class="num">約3,500円</td><td>36か月より前に解約すると端末代の残りを払う</td></tr>
+  <tr><td><b>Rakuten Turbo</b></td><td>―</td><td>楽天モバイル利用者は毎月ポイント</td><td class="num">約5,000円</td><td>楽天モバイルを使っている場合だけ候補</td></tr>
+</table>
+</div>
+<p class="small"><b>おすすめ：ドコモ home 5G（安定重視）か モバレコAir（安さ重視）。</b>家族のスマホと同じ会社にするとセット割が付くことがある。申込は店の住所で、<b>引き渡しが決まってから（2月）</b>。キャンペーンは月ごとに変わるので、申し込む時にもう一度比べる。店の場所が5Gエリアかは各社のエリアマップで確認。</p>
+
+<h2>床：モルタル調フロアタイルを上から敷く</h2>
+<div class="card">
+  <p class="small" style="margin-top:0">敷く広さ：LDK 10帖＋洋室 4.5帖 ＝ 約23.5㎡（1帖＝1.62㎡で計算）。切り落としのロス10%を足して<b>約26㎡分</b>を買う。接着剤を使わない「置き敷き」なら、退去時に剥がして戻せる。</p>
+  <table class="t">
+    <tr><th>やり方</th><th class="num">1㎡あたり</th><th class="num">全体（約26㎡）</th><th>メモ</th></tr>
+    <tr><td>通販の「置くだけ」吸着タイル（自分で敷く）</td><td class="num">約2,500〜4,500円（仮定）</td><td class="num">約6.5万〜12万円</td><td>一番安い。厚み・重さがある物ほどズレにくい</td></tr>
+    <tr><td>メーカーの置き敷き材（例：シンコール「置敷」）を自分で敷く</td><td class="num">約6,160円（税別5,600円）</td><td class="num">約16万円</td><td>業務用の品質。東リ「ピタフィー」にもモルタル柄あり（価格は要確認）</td></tr>
+    <tr><td>業者に頼む（材料＋施工）</td><td class="num">約5,000円〜（張り替えの平均）</td><td class="num">約12万〜20万円</td><td>置き敷き材の値段で上下する。見積もりは2〜3社</td></tr>
+  </table>
+  <p class="small">いまの床もグレーのモルタル調なので、その上に置き敷きして問題ないか（段差・ドアの開閉・凹凸）を内見時に確認。チェア（約66kg）の下はタイルの上でも傷防止マットを敷く。大家さんにも一言伝えておくと安心。</p>
+</div>
+
+<h2>掃除機・洗濯機</h2>
+<div class="grid g2">
+  <div class="card">
+    <b>掃除機：マキタのコードレス（CL286FD）</b>
+    <ul class="clean">
+      <li><b>理由</b>：本体が約1.1kgで軽く、サロン業務で使われることが多い。コードが無いのでお客様の足元に引っかからない。サイクロン式でゴミ捨てが簡単。ゴミが落ちていたらすぐ吸える</li>
+      <li><b>価格</b>：本体のみ 26,400円（白）。バッテリー・充電器付きのセットは別途</li>
+      <li><b>音</b>：パワフルモード約66dB。お客様が目を閉じている施術中は使わず、施術と施術の間に</li>
+    </ul>
+    <table class="t" style="margin-top:6px">
+      <tr><th>候補</th><th>向き・不向き</th></tr>
+      <tr><td>マキタ CL286FD</td><td>◎ 軽い・丈夫・安い。31.5㎡ならこれで十分</td></tr>
+      <tr><td>シャーク・ダイソン</td><td>○ 吸う力は強いが、重め・高め（31.5㎡には大きすぎる）</td></tr>
+      <tr><td>ロボット掃除機</td><td>△ チェアやパーテーションが多く、狭い店では効果が小さい</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <b>洗濯機：縦型洗濯機＋衣類乾燥機の組み合わせ</b>
+    <ul class="clean">
+      <li><b>洗う量の見込み</b>：1日4〜5人×タオル・ブランケット2〜3枚＝1日2〜3kg程度（仮定）。8kgの洗濯機・6kgの乾燥機なら1日1回で足りる</li>
+      <li><b>理由</b>：タオルがふんわり乾き、お客様に触れる質が上がる。乾燥中に次の洗濯を回せる。洗濯乾燥機1台より乾燥が速い</li>
+      <li><b>費用の目安</b>：縦型8kg 約6.4万〜6.7万円（東芝 AW-8DH5・日立 BW-V80K）＋乾燥機 日立 DE-N60HV 約6.3万〜7.2万円＋専用スタンド＝<b>約14万円前後</b>（設置費は別）</li>
+    </ul>
+    <table class="t" style="margin-top:6px">
+      <tr><th>候補</th><th>向き・不向き</th></tr>
+      <tr><td>縦型＋衣類乾燥機</td><td>◎ 仕上がり・速さ・故障時に片方だけ替えられる</td></tr>
+      <tr><td>縦型洗濯乾燥機（1台）</td><td>○ 置き場所が狭いならこちら。乾燥は時間がかかる</td></tr>
+      <tr><td>ドラム式</td><td>△ 20万円以上。この量には大きすぎる</td></tr>
+    </table>
+    <p class="small">買う前に、洗濯機置き場（防水パン）の幅・奥行き、乾燥機を上に置く高さ、コンセントの数を測る。</p>
+  </div>
+</div>
+
+<h2>参考にした情報（2026年11月15日時点）</h2>
+<div class="card small">
+<ul class="clean">
+  <li><a href="https://7beauty.jp/pickup/t01-recliningchair">7beauty T01 リクライニングチェア</a>／<a href="https://7beauty.jp/item/49437/">T01 アドバンス 商品ページ</a></li>
+  <li><a href="https://www.beautygarage.jp/pickup/recliningchair">ビューティガレージ リクライニングチェア特集</a>／<a href="https://www.beautygarage.jp/showroom/osaka">大阪ショールーム</a></li>
+  <li><a href="https://selectra.jp/telecom/home-router/comparison">ホームルーター比較（selectra・2026年11月）</a></li>
+  <li><a href="https://www.sincol.co.jp/assets/pdf/digital-catalog/PASO22_02.pdf">シンコール 置敷 カタログ</a>／<a href="https://meetsmore.com/services/vinyl-flooring-replacement/media/107971">フロアタイル張り替え相場（ミツモア）</a></li>
+  <li><a href="https://www.ksdenki.com/shop/g/g0088381781589/">マキタ CL286FDZW（ケーズデンキ）</a>／<a href="https://www.ksdenki.com/shop/g/g4549873161501/">日立 DE-N60HV（ケーズデンキ）</a>／<a href="https://kakakumag.com/seikatsu-kaden/?id=22418">縦型洗濯機 価格（かかくマグ）</a></li>
+</ul>
+価格・キャンペーンは変わるので、買う・申し込む時にもう一度確認する。
+</div>
+
+
+
+<h2>計画の変更履歴</h2>
+<div class="card">
+<ul class="clean">
+  <li><b>2026年4月</b>　計画スタート。2027年9月の開業を目標に設定</li>
+  <li><b>2026年5〜6月</b>　協業（シミケア）を含めた形に変更。開業目標を2027年夏に前倒し</li>
+  <li><b>2026年7月</b>　商工会と面談。補助金・融資・特定創業支援の進め方を整理</li>
+  <li><b>2026年11月</b>　物件を決定。2月中の引き渡し・2027年4月開業に前倒し</li>
+</ul>
+<p class="small" style="margin:8px 0 0">※ 7月までのガントチャート・行動計画書（Google）は2027年夏開業の前提のままで、まだ4月開業に直していません。</p>
+</div>
+
+<footer>
+  sen 開業準備の進捗（下書き）。内容は2026年11月15日時点の計画で、確定していないものを含みます。
+</footer>
+
+</div>
+<script>
+  (function(){
+    var open=new Date(2027,3,1), now=new Date();
+    var d=Math.ceil((open-now)/86400000);
+    if(d>0){document.getElementById('cd-open').textContent='4月1日まであと '+d+' 日';}
+  })();
+</script>
+</body>
+</html>
