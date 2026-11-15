@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow">
+<title>sen 計画の中身</title><style>
+  :root{
+    --bg:#f7f4ef; --card:#ffffff; --ink:#2b2a28; --sub:#6b665e; --line:#e4ded4;
+    --accent:#7a8b6f; --accent-soft:#e7ece2; --warn:#b5763a; --warn-soft:#f6ebdd;
+    --done:#9aa59a; --todo:#d9d2c6; --ms:#2b2a28;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif;
+    line-height:1.7;font-size:15px}
+  .wrap{max-width:980px;margin:0 auto;padding:28px 18px 64px}
+  header .brand{font-size:13px;letter-spacing:.2em;color:var(--sub)}
+  header h1{font-size:26px;margin:4px 0 2px;font-weight:700}
+  header .tag{color:var(--sub);font-size:13px}
+  .updated{display:inline-block;margin-top:10px;font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:999px;padding:2px 10px;background:var(--card)}
+  h2{font-size:18px;margin:36px 0 12px;padding-left:10px;border-left:4px solid var(--accent)}
+  .grid{display:grid;gap:12px}
+  .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  @media (max-width:720px){.g3,.g2{grid-template-columns:minmax(0,1fr)}}
+  .card{min-width:0;overflow-wrap:anywhere}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .kpi .label{font-size:12px;color:var(--sub)}
+  .kpi .value{font-size:22px;font-weight:700;margin-top:2px}
+  .kpi .note{font-size:12px;color:var(--sub);margin-top:2px}
+  .status{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;margin-right:6px;vertical-align:1px}
+  .s-done{background:#e9ece9;color:#55605a} .s-doing{background:var(--accent-soft);color:#4d5f44}
+  .s-todo{background:#efe9df;color:#7a6f60} .s-warn{background:var(--warn-soft);color:#8a5524}
+  ul.clean{list-style:none;margin:0;padding:0}
+  ul.clean li{padding:8px 0;border-bottom:1px dashed var(--line)}
+  ul.clean li:last-child{border-bottom:none}
+  .who{font-size:12px;color:var(--sub);margin-left:4px}
+  .callout{background:var(--warn-soft);border:1px solid #ecd8bf;border-radius:10px;padding:12px 16px;font-size:14px}
+  /* gantt */
+  .gantt{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow-x:auto}
+  .grow{display:grid;grid-template-columns:200px repeat(6,minmax(70px,1fr));min-width:640px;border-bottom:1px solid var(--line)}
+  .grow:last-child{border-bottom:none}
+  .grow.head{background:#faf8f4;font-size:12px;color:var(--sub);font-weight:700}
+  .grow.sec{background:#fbfaf7;font-size:12px;font-weight:700;color:var(--accent)}
+  .grow.sec .gname{grid-column:1/-1}
+  .gname{padding:7px 10px;font-size:13px}
+  .gcell{padding:7px 4px;text-align:center}
+  .bars{grid-column:2/-1;display:grid;grid-template-columns:repeat(6,1fr);align-items:center;position:relative;
+    background-image:linear-gradient(to right,var(--line) 1px,transparent 1px);background-size:calc(100%/6) 100%}
+  .bar{height:16px;border-radius:4px;margin:0 4px}
+  .b-done{background:var(--done)} .b-doing{background:var(--accent)} .b-todo{background:var(--todo)}
+  .b-ms{height:auto;background:none;text-align:center;font-size:12px;font-weight:700;color:var(--ms)}
+  .legend{font-size:12px;color:var(--sub);margin-top:8px}
+  .legend span{display:inline-block;width:14px;height:10px;border-radius:2px;vertical-align:0;margin:0 4px 0 10px}
+  table.t{width:100%;border-collapse:collapse;font-size:14px}
+  table.t th,table.t td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+  table.t th{font-size:12px;color:var(--sub);font-weight:700;background:#faf8f4}
+  .num{text-align:right;white-space:nowrap}
+  .small{font-size:12px;color:var(--sub)}
+  footer{margin-top:40px;font-size:12px;color:var(--sub)}
+  a{color:#4d5f44}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;align-items:start}
+  .gallery figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px}
+  .gallery img{width:100%;height:auto;border-radius:6px;display:block}
+  .gallery figcaption{font-size:12px;color:var(--sub);margin-top:6px;line-height:1.5}
+  .private{border-left:3px solid var(--warn);padding-left:10px}
+
+  nav.site{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+  nav.site a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 12px}
+  nav.site a.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .big{font-size:16px;line-height:1.8}
+  .tl{list-style:none;margin:0;padding:0;border-left:3px solid var(--line);margin-left:8px}
+  .tl li{position:relative;padding:4px 0 14px 18px}
+  .tl li:before{content:"";position:absolute;left:-8px;top:10px;width:13px;height:13px;border-radius:50%;background:var(--todo);border:2px solid var(--card)}
+  .tl li.key:before{background:var(--warn)} .tl li.done:before{background:var(--done)}
+  .tl .d{font-weight:700} .tl .x{font-size:13px;color:var(--sub)}
+  .ok{color:#4d5f44;font-weight:700} .ng{color:#8a5524;font-weight:700}
+</style></head>
+<body><div class="wrap">
+<header><div class="brand">sen ｜ Enjoy Life Forever ／ 千年先もきれいに</div><h1>計画の中身</h1>
+<div class="tag">コンセプト・メニュー・価格・数字</div><div class="updated">最終更新 2026年11月15日</div>
+<nav class="site"><a href="index.html">進捗</a><a class="on" href="plan.html">計画の中身（コンセプト・メニュー・数字）</a><a href="subsidy.html">補助金（持続化・一般型）</a></nav></header>
+<h2>コンセプト</h2>
+<div class="card big">
+  <b>ENJOY LIFE FOREVER ― 千年先も、きれいに・かわいく。</b><br>
+  「今だけかわいい」ではなく、長く続けられる施術と提案で、ずっときれいでいられるようにする。肌に負担の大きいメニューは慎重に選ぶ。
+</div>
+<div class="grid g2" style="margin-top:12px">
+  <div class="card"><b>ブランド体験</b>
+    <ul class="clean small">
+      <li>サロンの空間に<b>非日常感</b>を出す</li>
+      <li>「ここに居るからおしゃれ」「ここで私は変われる」と思える場所</li>
+      <li>スウェット・クロックスで来る所ではない、少し背筋が伸びる空気感</li>
+      <li>感度の高いお客様を増やし、育てる（地域の美意識を引き上げる）</li>
+      <li>遠くの街まで行かなくても、地元でおしゃれになれる場所</li>
+    </ul></div>
+  <div class="card"><b>価格の考え方</b>
+    <ul class="clean small">
+      <li>客単価の目安は <b>7,000円</b>（上げる案もあり：下の価格案）</li>
+      <li>4,000円台のような安売りはしない</li>
+      <li>来店の間隔を保つための割引（早割・次回予約割）で通ってもらう</li>
+    </ul></div>
+</div>
+
+
+<h2>メニュー構成</h2>
+<div class="card">
+<ul class="clean">
+  <li><b>まつ毛パーマ</b></li>
+  <li><b>まつげエクステ</b>：通常グルー／LEDグルーの2種類</li>
+  <li><b>アイブロウ（眉）</b>：女性・男性。男性は短い間隔で通ってもらえる入口メニュー。WAXは講習を受けるか検討中（最初はシートWAXでも可）</li>
+  <li><b>シミケア</b>：協業（義姉）のメニュー。新しい物件での進め方は未定</li>
+  <li><span class="status s-todo">保留</span>フェイシャル：肌への負担とのバランスで検討中</li>
+  <li><span class="status s-warn">やらない</span>ゾンビマスクなど特殊系：手間がかかり、コンセプトにも合わない</li>
+</ul>
+<p class="small">方針：今あるメニューを土台にして、むやみに足さない。</p>
+</div>
+
+<h2>来店の間隔（メニュー別）</h2>
+<div class="card" style="padding:0;overflow-x:auto">
+<table class="t">
+  <tr><th>メニュー</th><th>おすすめの間隔</th><th>早割</th><th>メモ</th></tr>
+  <tr><td>まつ毛パーマ</td><td>5〜7週（理想は6週前後）</td><td>―</td><td>来店ペースの基準</td></tr>
+  <tr><td>エクステ（通常グルー）</td><td>4週以内</td><td>○</td><td>扱いやすい</td></tr>
+  <tr><td>エクステ（LEDグルー）</td><td>6週以内</td><td>○</td><td>長持ちタイプ</td></tr>
+  <tr><td>アイブロウ（女性・薄め）</td><td>6週</td><td>―</td><td>パーマと同じ間隔でよい</td></tr>
+  <tr><td>アイブロウ（男性・濃いめ）</td><td>4週</td><td>―</td><td>理想は3週だが枠が取り切れないので4週で運用</td></tr>
+</table>
+</div>
+
+<h2>価格案（ドラフト・未確定）</h2>
+<div class="card" style="padding:0;overflow-x:auto">
+<table class="t">
+  <tr><th>メニュー</th><th class="num">A案（今の路線）</th><th class="num">B案（コンセプト重視）</th><th class="num">C案（おすすめ候補）</th><th>間隔</th></tr>
+  <tr><td>まつ毛パーマ</td><td class="num">7,500円</td><td class="num">9,000円</td><td class="num">9,000円</td><td>5〜7週</td></tr>
+  <tr><td>エクステ 通常グルー 80本</td><td class="num">6,500円</td><td class="num">8,000円</td><td class="num">8,000円</td><td>4週以内</td></tr>
+  <tr><td>エクステ LEDグルー 80本</td><td class="num">8,500円</td><td class="num">10,500円</td><td class="num">10,500円</td><td>5週以内</td></tr>
+  <tr><td>エクステ 通常グルー 120本</td><td class="num">8,500円</td><td class="num">10,500円</td><td class="num">10,500円</td><td>4週以内</td></tr>
+  <tr><td>エクステ LEDグルー 120本</td><td class="num">10,500円</td><td class="num">13,000円</td><td class="num">13,000円</td><td>6週以内</td></tr>
+  <tr><td>アイブロウ 女性</td><td class="num">5,500円</td><td class="num">6,500円</td><td class="num">5,500円</td><td>6週</td></tr>
+  <tr><td>アイブロウ 男性</td><td class="num">5,000円</td><td class="num">6,000円</td><td class="num">5,000円</td><td>4週</td></tr>
+  <tr><td><b>想定の客単価</b></td><td class="num"><b>約7,200円</b></td><td class="num"><b>約8,500円</b></td><td class="num"><b>約8,000円</b></td><td></td></tr>
+</table>
+</div>
+<p class="small">C案＝エクステ・パーマはB案の価格（コンセプトに合わせる）、アイブロウだけA案の価格（気軽に通える入口を残す）。税込。</p>
+<div class="grid g2">
+  <div class="card"><b>セット（A案の例）</b>
+    <table class="t">
+      <tr><td>パーマ＋アイブロウ女性</td><td class="num">13,000円 → 11,500円</td></tr>
+      <tr><td>パーマ＋エクステ通常80本</td><td class="num">14,000円 → 12,000円</td></tr>
+      <tr><td>エクステLED120本＋アイブロウ女性</td><td class="num">16,000円 → 14,000円</td></tr>
+    </table>
+    <p class="small">B案・C案はセット割 2,000〜2,500円引き。</p></div>
+  <div class="card"><b>割引・特典</b>
+    <ul class="clean small">
+      <li><b>初回</b>：InstagramとLINE公式の両方を登録 → 次回 1,000円引き</li>
+      <li><b>次回予約割</b>：帰る時に次回予約 → 毎回 500円引き</li>
+      <li><b>早割（エクステ）</b>：決めた間隔の中で来店 → 500円引き（次回予約割との併用は要検討）</li>
+      <li><b>誕生月</b>：1,000円引き（入れるか検討中）</li>
+    </ul></div>
+</div>
+
+<h2>店販（お店で売る物）</h2>
+<div class="card">
+<ul class="clean small">
+  <li>まつげ美容液（4,500円前後）・まつげコーティング・アイラッシュ用クレンジング（3,000円前後）</li>
+  <li>アイブロウ用ジェル（2,500円前後）・ホームケア用ブラシ／コーム（1,500円前後）</li>
+  <li>ハンドソープ（置いてもいい、くらいの軽さで）。香りの良さで選ぶ</li>
+  <li>ファンデーションなどコスメまでは広げない。仕入れ先は未定</li>
+</ul>
+</div>
+
+
+
+<h2>まだ決めること</h2>
+<div class="card">
+<ul class="clean small">
+  <li>価格はA・B・Cどの案で行くか</li>
+  <li>エクステの本数を 80／120本の2段階にするか、80／100／120／140本の4段階にするか</li>
+  <li>アイブロウ女性の間隔を6週と4週のどちらで回すか</li>
+  <li>早割と次回予約割を併用できるようにするか、誕生月特典を入れるか</li>
+  <li>店販の3アイテムと仕入れ先</li>
+  <li>営業日・時間（定休日は日曜・祝日の予定）</li>
+  <li>予約システム（Square／RESERVA／LINE公式など）・レジ・会計ソフト</li>
+  <li>LEDエクステ・まつ毛パーマを開業時から出すか、少し後に追加するか（補助金との関係）</li>
+</ul>
+</div>
+<p class="small">元にした資料：計画ノート（コンセプト・メニュー・価格・売上目標・収益構造・協業）、ガントチャート（Google スプレッドシート）、行動計画書（Google ドキュメント）。元の資料は更新せず、このページを最新版として扱う。</p>
+
+<footer>sen 開業準備（下書き）。価格・メニューは未確定のドラフトを含む。</footer>
+</div></body></html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow">
+<title>sen 補助金（持続化・一般型）</title><style>
+  :root{
+    --bg:#f7f4ef; --card:#ffffff; --ink:#2b2a28; --sub:#6b665e; --line:#e4ded4;
+    --accent:#7a8b6f; --accent-soft:#e7ece2; --warn:#b5763a; --warn-soft:#f6ebdd;
+    --done:#9aa59a; --todo:#d9d2c6; --ms:#2b2a28;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif;
+    line-height:1.7;font-size:15px}
+  .wrap{max-width:980px;margin:0 auto;padding:28px 18px 64px}
+  header .brand{font-size:13px;letter-spacing:.2em;color:var(--sub)}
+  header h1{font-size:26px;margin:4px 0 2px;font-weight:700}
+  header .tag{color:var(--sub);font-size:13px}
+  .updated{display:inline-block;margin-top:10px;font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:999px;padding:2px 10px;background:var(--card)}
+  h2{font-size:18px;margin:36px 0 12px;padding-left:10px;border-left:4px solid var(--accent)}
+  .grid{display:grid;gap:12px}
+  .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  @media (max-width:720px){.g3,.g2{grid-template-columns:minmax(0,1fr)}}
+  .card{min-width:0;overflow-wrap:anywhere}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .kpi .label{font-size:12px;color:var(--sub)}
+  .kpi .value{font-size:22px;font-weight:700;margin-top:2px}
+  .kpi .note{font-size:12px;color:var(--sub);margin-top:2px}
+  .status{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;margin-right:6px;vertical-align:1px}
+  .s-done{background:#e9ece9;color:#55605a} .s-doing{background:var(--accent-soft);color:#4d5f44}
+  .s-todo{background:#efe9df;color:#7a6f60} .s-warn{background:var(--warn-soft);color:#8a5524}
+  ul.clean{list-style:none;margin:0;padding:0}
+  ul.clean li{padding:8px 0;border-bottom:1px dashed var(--line)}
+  ul.clean li:last-child{border-bottom:none}
+  .who{font-size:12px;color:var(--sub);margin-left:4px}
+  .callout{background:var(--warn-soft);border:1px solid #ecd8bf;border-radius:10px;padding:12px 16px;font-size:14px}
+  /* gantt */
+  .gantt{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow-x:auto}
+  .grow{display:grid;grid-template-columns:200px repeat(6,minmax(70px,1fr));min-width:640px;border-bottom:1px solid var(--line)}
+  .grow:last-child{border-bottom:none}
+  .grow.head{background:#faf8f4;font-size:12px;color:var(--sub);font-weight:700}
+  .grow.sec{background:#fbfaf7;font-size:12px;font-weight:700;color:var(--accent)}
+  .grow.sec .gname{grid-column:1/-1}
+  .gname{padding:7px 10px;font-size:13px}
+  .gcell{padding:7px 4px;text-align:center}
+  .bars{grid-column:2/-1;display:grid;grid-template-columns:repeat(6,1fr);align-items:center;position:relative;
+    background-image:linear-gradient(to right,var(--line) 1px,transparent 1px);background-size:calc(100%/6) 100%}
+  .bar{height:16px;border-radius:4px;margin:0 4px}
+  .b-done{background:var(--done)} .b-doing{background:var(--accent)} .b-todo{background:var(--todo)}
+  .b-ms{height:auto;background:none;text-align:center;font-size:12px;font-weight:700;color:var(--ms)}
+  .legend{font-size:12px;color:var(--sub);margin-top:8px}
+  .legend span{display:inline-block;width:14px;height:10px;border-radius:2px;vertical-align:0;margin:0 4px 0 10px}
+  table.t{width:100%;border-collapse:collapse;font-size:14px}
+  table.t th,table.t td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+  table.t th{font-size:12px;color:var(--sub);font-weight:700;background:#faf8f4}
+  .num{text-align:right;white-space:nowrap}
+  .small{font-size:12px;color:var(--sub)}
+  footer{margin-top:40px;font-size:12px;color:var(--sub)}
+  a{color:#4d5f44}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;align-items:start}
+  .gallery figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px}
+  .gallery img{width:100%;height:auto;border-radius:6px;display:block}
+  .gallery figcaption{font-size:12px;color:var(--sub);margin-top:6px;line-height:1.5}
+  .private{border-left:3px solid var(--warn);padding-left:10px}
+
+  nav.site{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+  nav.site a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 12px}
+  nav.site a.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .big{font-size:16px;line-height:1.8}
+  .tl{list-style:none;margin:0;padding:0;border-left:3px solid var(--line);margin-left:8px}
+  .tl li{position:relative;padding:4px 0 14px 18px}
+  .tl li:before{content:"";position:absolute;left:-8px;top:10px;width:13px;height:13px;border-radius:50%;background:var(--todo);border:2px solid var(--card)}
+  .tl li.key:before{background:var(--warn)} .tl li.done:before{background:var(--done)}
+  .tl .d{font-weight:700} .tl .x{font-size:13px;color:var(--sub)}
+  .ok{color:#4d5f44;font-weight:700} .ng{color:#8a5524;font-weight:700}
+</style></head>
+<body><div class="wrap">
+<header><div class="brand">sen ｜ Enjoy Life Forever ／ 千年先もきれいに</div><h1>補助金：小規模事業者持続化補助金（一般型）</h1>
+<div class="tag">スケジュール・必要な物・リンク</div><div class="updated">最終更新 2026年11月15日</div>
+<nav class="site"><a href="index.html">進捗</a><a href="plan.html">計画の中身（コンセプト・メニュー・数字）</a><a class="on" href="subsidy.html">補助金（持続化・一般型）</a></nav></header>
+<h2>結論</h2>
+<div class="callout big">
+  <b>今回（第20回・12/15締切）に代表の名前で申請するのは難しい。</b><br>
+  一般型は「申請の時点で開業していて、売上が出ていること」が条件。開業届を出していても、事業をまだ始めていない（売上が無い）場合は対象外で、採択後に分かると取り消しになる（公募要領 第9版 p.5、よくある質問 Q2-6）。<br>
+  まつげエクステは保健所に届け出た「美容所」でしか施術できないので、店ができる前に売上を作ることもできない。<br>
+  <b>→ 4月に開業して売上が出てから、次の回（一般型 第21回 または 創業型）に申請する。</b>
+</div>
+<div class="grid g3" style="margin-top:12px">
+  <div class="card"><span class="status s-warn">今回は不可</span><b>一般型 第20回</b><p class="small" style="margin:6px 0 0">申請時に売上の実績（売上台帳）が必要。開業前なので出せない。</p></div>
+  <div class="card"><span class="status s-doing">本命</span><b>開業後の次の回</b><p class="small" style="margin:6px 0 0">一般型 第21回（日程未発表）か、創業型（上限200万円）。開業から1年以内なら創業型が使える。</p></div>
+  <div class="card"><span class="status s-todo">今からやる</span><b>創業型の準備</b><p class="small" style="margin:6px 0 0">商工会の継続支援（1か月以上・4回以上）を受けて「特定創業支援」の証明書を取っておく。融資の金利優遇にも使える。</p></div>
+</div>
+
+<h2>一般型と創業型のちがい</h2>
+<div class="card" style="padding:0;overflow-x:auto">
+<table class="t">
+  <tr><th style="width:130px"></th><th>一般型（通常枠）</th><th>創業型</th></tr>
+  <tr><td>補助率・上限</td><td>2/3・<b>50万円</b>（インボイス特例で+50万円）</td><td>2/3・<b>200万円</b>（インボイス特例で+50万円）</td></tr>
+  <tr><td>申請できる人</td><td>開業していて売上がある小規模事業者（開業からの年数は問わない）</td><td>開業から1年以内＋「特定創業支援」の証明書がある人</td></tr>
+  <tr><td>商工会の書類</td><td>様式4（事業支援計画書）</td><td>様式4＋特定創業支援の証明書（町が発行）</td></tr>
+  <tr><td>同時申請</td><td colspan="2">一般型と創業型は同時に申請できない。片方の申請中・採択中はもう片方に申請できない</td></tr>
+  <tr><td>うちに合うのは</td><td>開業後、売上が出てから。小さく確実に</td><td><b>開業後1年以内の回。</b>新メニュー機器・看板・ホームページなどをまとめて大きく</td></tr>
+</table>
+</div>
+
+<h2>第20回（一般型）のスケジュール ― 参考</h2>
+<div class="card">
+<ul class="tl">
+  <li class="done"><span class="d">2026年11月5日</span>　申請受付開始</li>
+  <li class="key"><span class="d">12月4日（金）</span>　商工会の様式4（事業支援計画書）発行の受付締切。商工会の窓口で面談あり。締切後は理由を問わず発行不可</li>
+  <li class="key"><span class="d">12月15日（火）17:00</span>　申請締切（電子申請のみ・郵送不可）</li>
+  <li><span class="d">2027年3月ごろ</span>　採択発表（締切から2〜3か月）</li>
+  <li><span class="d">採択後すぐ</span>　見積書（相見積を含む）を提出。100万円（税込）を超える支払いは2社以上の見積が必要</li>
+  <li><span class="d">採択から1〜2か月</span>　交付決定。<b>この日から注文・支払いができる</b>（前に買った物は対象外）</li>
+  <li><span class="d">〜2028年3月31日</span>　補助事業の実施期限（注文・支払い・事業を完了）</li>
+  <li><span class="d">〜2028年4月10日</span>　実績報告の最終期限（事業終了から30日以内のどちらか早い日）</li>
+  <li><span class="d">実績報告のあと</span>　確定検査 → 精算払い請求 → 入金（後払い）</li>
+  <li><span class="d">事業終了から約1年後</span>　事業効果報告（売上などの報告）。出さないと次の補助金に申請できない</li>
+</ul>
+</div>
+
+<h2>うちの進め方（案）</h2>
+<div class="card">
+<ul class="tl">
+  <li class="key"><span class="d">11月中</span>　商工会に連絡。①開業前で今回出せないことの確認 ②創業型に向けた継続支援（特定創業支援）を始める ③次の回の時期の見込み</li>
+  <li><span class="d">11月〜12月</span>　商工会の継続支援（経営・財務・人材育成・販路開拓の4分野を、1か月以上・4回以上）。融資を使うなら公庫の相談も同時に</li>
+  <li><span class="d">12月〜1月</span>　GビズIDプライムを取得（電子申請に必須）。マイナンバーカードがあればオンラインで早い</li>
+  <li><span class="d">2027年1〜3月</span>　経営計画・補助事業計画を作る。補助金で買う物（新メニュー機器・看板・チラシ・ホームページ）の見積もり</li>
+  <li class="key"><span class="d">2027年4月</span>　開業。開業届（開業日＝実際に営業を始めた日）・青色申告承認申請。売上台帳をつけ始める</li>
+  <li class="key"><span class="d">開業後の次の回</span>　創業型（または一般型）に申請 → 採択 → 交付決定のあとに新メニュー機器などを買う</li>
+</ul>
+<p class="small">開業後に申請するので、開業時に必要な物（チェア・備品約37万円・床・パーテーション）は補助の対象外。補助金は「開業後に追加する新メニュー（LEDエクステ・まつ毛パーマなど）の機器」「看板・チラシ・ホームページ」に使う。</p>
+</div>
+
+<h2>申請に必要な物</h2>
+<div class="card" style="padding:0;overflow-x:auto">
+<table class="t">
+  <tr><th style="width:220px">書類</th><th>中身・準備</th></tr>
+  <tr><td>様式1・2・3・5・6</td><td>申請書・経営計画兼補助事業計画・補助事業計画②・交付申請書・宣誓同意書。<b>電子申請システムに直接入力</b>（添付不要）</td></tr>
+  <tr><td>様式4（事業支援計画書）</td><td>商工会が発行。電子申請システムから商工会に依頼し、窓口で面談して発行してもらう</td></tr>
+  <tr><td>開業届の写し＋売上台帳</td><td>確定申告をまだしたことが無い個人の場合。開業日が書かれていない開業届は無効。マイナンバーは黒塗り</td></tr>
+  <tr><td>（創業型のみ）特定創業支援の証明書</td><td>商工会の継続支援を受けたあと、町が発行</td></tr>
+  <tr><td>GビズIDプライム</td><td>電子申請のログインに必須。採択後の手続きにも使う</td></tr>
+  <tr><td>見積書（採択後）</td><td>交付決定の前に提出。100万円（税込）超は2社以上</td></tr>
+</table>
+</div>
+
+<h2>補助の対象になる物・ならない物</h2>
+<div class="grid g2">
+  <div class="card"><b class="ok">対象</b>
+    <ul class="clean small">
+      <li>機械装置等費：新しいメニュー用の機器（例：LEDエクステの機器）</li>
+      <li>広報費：チラシ・看板</li>
+      <li>ウェブサイト関連費：ホームページ・予約ページ（補助額の1/4まで。これだけでの申請は不可）</li>
+      <li>委託・外注費：店の改装など自分でできない作業</li>
+      <li>借料・展示会出展費・旅費・新商品開発費</li>
+    </ul></div>
+  <div class="card"><b class="ng">対象外</b>
+    <ul class="clean small">
+      <li>交付決定の前に注文・契約・支払い（前払いも）した物</li>
+      <li>家庭用の電化製品（掃除機・洗濯機など）、パソコン・タブレット・スマホ、文房具</li>
+      <li>10万円（税抜）を超える現金払い。原則は銀行振込</li>
+      <li>オークションでの購入、商品券・相殺での支払い</li>
+      <li>申請書類の作成費用。講習・研修費は対象経費の一覧に無い（要確認）</li>
+    </ul></div>
+</div>
+
+<h2>リンク</h2>
+<div class="card">
+<ul class="clean">
+  <li><a href="https://official.jizokukanb.com/">持続化補助金 事務局（商工会地区）</a>　有田川町は商工会地区。問い合わせは地域の商工会へ</li>
+  <li><a href="https://r6.jizokukahojokin.info/oubo20.php">第20回（一般型）の応募ページ</a>／<a href="https://r6.jizokukahojokin.info/doc/r6_koubover9_ip20.pdf">公募要領 第9版（PDF）</a>／<a href="https://r6.jizokukahojokin.info/doc/r6_guidebook_ip20.pdf">ガイドブック（PDF）</a>／<a href="https://r6.jizokukahojokin.info/doc/r6_qa_ip20.pdf">よくある質問（PDF）</a></li>
+  <li><a href="https://www.jizokuka-portal.info/">電子申請システム（一般型）</a></li>
+  <li><a href="https://gbiz-id.go.jp/top/">GビズID（取得はこちら）</a></li>
+  <li><a href="https://www12.shokokai.or.jp/hpsearch/top/php/shokokai_websearch.php">商工会検索（有田川町商工会）</a></li>
+  <li><a href="https://www.nta.go.jp/taxes/tetsuzuki/shinsei/annai/shinkoku/annai/04.htm">開業届（国税庁）</a>／<a href="https://www.nta.go.jp/taxes/tetsuzuki/shinsei/annai/shinkoku/annai/09.htm">青色申告承認申請（国税庁）</a></li>
+</ul>
+<p class="small">2026年11月15日時点の公募要領（第9版）・よくある質問をもとに作成。次の回の日程・条件は発表後に確認する。</p>
+</div>
+
+<footer>sen 開業準備（下書き）。補助金の条件は公募回ごとに変わるので、申請前に最新の公募要領で確認する。</footer>
+</div></body></html>
