@@ -76,9 +76,26 @@
   .tl li.key:before{background:var(--warn)} .tl li.done:before{background:var(--done)}
   .tl .d{font-weight:700} .tl .x{font-size:13px;color:var(--sub)}
   .ok{color:#4d5f44;font-weight:700} .ng{color:#8a5524;font-weight:700}
+  .cta-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;align-items:center}
+  .btn-link{display:inline-block;font-size:13px;font-weight:700;text-decoration:none;color:#4d5f44;background:var(--accent-soft);border:1px solid #cfd8c8;border-radius:8px;padding:5px 12px}
+  .btn-link-sub{display:inline-block;font-size:13px;text-decoration:none;color:var(--ink);background:#faf8f4;border:1px solid var(--line);border-radius:8px;padding:5px 12px}
+  h2[id]{scroll-margin-top:76px}
+  .sticky-todo{position:sticky;top:8px;z-index:60;margin:16px 0 4px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:10px;box-shadow:0 4px 16px rgba(43,42,40,.08)}
+  .sticky-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;flex-wrap:wrap}
+  .sticky-toggle{appearance:none;border:1px solid #cfd8c8;background:var(--accent-soft);color:#4d5f44;border-radius:8px;padding:5px 11px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
+  .sticky-toggle:hover{background:#dce4d5}
+  .sticky-nav{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:12px}
+  .sticky-nav a{text-decoration:none;color:var(--ink);border:1px solid var(--line);background:#faf8f4;border-radius:999px;padding:3px 10px;white-space:nowrap}
+  .sticky-nav a.accent{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700}
+  .sticky-panel{display:none;border-top:1px solid var(--line);padding:10px 14px 12px;max-height:50vh;overflow-y:auto;background:var(--card);border-radius:0 0 10px 10px}
+  .sticky-panel.open{display:block}
+  .sticky-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;align-items:center}
+  .sticky-tab{appearance:none;border:1px solid var(--line);background:#faf8f4;color:var(--sub);border-radius:999px;padding:3px 10px;font-size:12px;cursor:pointer;font-family:inherit}
+  .sticky-tab.on{background:var(--accent-soft);color:#4d5f44;border-color:#cfd8c8;font-weight:700}
+  .sticky-panel ul.clean li{padding:6px 0;font-size:13px}
 </style>
 </head>
-<body>
+<body id="top">
 <div class="wrap">
 
 <header>
@@ -88,6 +105,29 @@
   <div class="updated">最終更新 2026年11月15日</div>
   <nav class="site"><a class="on" href="index.html">進捗</a><a href="plan.html">計画の中身（コンセプト・メニュー・数字）</a><a href="subsidy.html">補助金・公庫</a></nav>
 </header>
+
+<div class="sticky-todo" id="sticky-todo">
+  <div class="sticky-bar">
+    <button type="button" class="sticky-toggle" id="sticky-toggle" aria-expanded="false" aria-controls="sticky-panel">
+      <span>やることを見る（〜11月末・未定）</span><span id="sticky-arrow">▾</span>
+    </button>
+    <div class="sticky-nav">
+      <a href="#todo">直近</a>
+      <a href="#monthly">月ごと</a>
+      <a href="#subsidy-plan">補助金案</a>
+      <a class="accent" href="subsidy.html">補助金・公庫 →</a>
+      <a href="#top">↑ 上へ</a>
+    </div>
+  </div>
+  <div class="sticky-panel" id="sticky-panel">
+    <div class="sticky-tabs">
+      <button type="button" class="sticky-tab on" data-tab="todo">直近2週間でやること</button>
+      <button type="button" class="sticky-tab" data-tab="undecided">まだ決まっていないこと</button>
+      <a href="#monthly" class="small" style="margin-left:auto" id="sticky-jump-monthly">月ごとの表へ ↓</a>
+    </div>
+    <ul class="clean" id="sticky-list"></ul>
+  </div>
+</div>
 
 <h2>いまの状況</h2>
 <div class="grid g3">
@@ -115,7 +155,11 @@
   </div>
   <div class="card">
     <div><span class="status s-warn">見直し</span><b>お金・補助金・公庫</b></div>
-    <p class="small" style="margin:6px 0 0">持続化補助金は12/15締切には出さず、<b>4月開業後の春回（4〜5月頃）または秋回（11〜12月頃）に申請 → 交付決定後に新メニュー機器等を買う</b>。開業費を絞れば自己資金でも回るが、<b>手元温存・補助金つなぎ用に公庫（100万円目安）を借りる選択肢</b>も検討中 → <a href="subsidy.html">補助金・公庫のページ</a>。</p>
+    <p class="small" style="margin:6px 0 0">持続化補助金は12/15締切には出さず、<b>4月開業後の春回（4〜5月頃）または秋回（11〜12月頃）に申請 → 交付決定後に新メニュー機器等を買う</b>。開業費を絞れば自己資金でも回るが、<b>手元温存・補助金つなぎ用に公庫（100万円目安）を借りる選択肢</b>も検討中。</p>
+    <div class="cta-row">
+      <a class="btn-link" href="subsidy.html">補助金・公庫ページを開く →</a>
+      <a class="btn-link-sub" href="subsidy.html#jfc">公庫・運転資金の考え方</a>
+    </div>
   </div>
   <div class="card">
     <div><span class="status s-todo">これから</span><b>保健所・手続き</b></div>
@@ -123,9 +167,9 @@
   </div>
 </div>
 
-<h2>直近2週間でやること（〜11月末）</h2>
+<h2 id="todo">直近2週間でやること（〜11月末）</h2>
 <div class="card">
-<ul class="clean">
+<ul class="clean" id="todo-list">
   <li><span class="status s-doing">進行中</span>不動産会社と契約条件を詰める：契約開始日（目標 2/1）、前金の扱い（家賃に充当されるか・キャンセル時に戻るか）、部屋番号、駐車場2台目<span class="who">経営管理</span></li>
   <li><span class="status s-todo">未</span>前金を払って部屋を押さえる<span class="who">経営管理</span></li>
   <li><span class="status s-todo">未</span>図面を持って保健所へ事前相談（美容所として使えるか）<span class="who">代表＋経営管理</span></li>
@@ -135,7 +179,7 @@
 </ul>
 </div>
 
-<h2>4月開業までの流れ</h2>
+<h2 id="gantt">4月開業までの流れ</h2>
 <div class="gantt">
   <div class="grow head"><div class="gname">やること</div><div class="gcell">11月</div><div class="gcell">12月</div><div class="gcell">1月</div><div class="gcell">2月</div><div class="gcell">3月</div><div class="gcell">4月</div></div>
 
@@ -148,11 +192,11 @@
   <div class="grow"><div class="gname">図面で事前相談</div><div class="bars"><div class="bar b-todo" style="grid-column:1/3"></div></div></div>
   <div class="grow"><div class="gname">美容所の開設届・検査</div><div class="bars"><div class="bar b-todo" style="grid-column:5/6"></div></div></div>
 
-  <div class="grow sec"><div class="gname">お金（補助金・公庫）</div></div>
+  <div class="grow sec"><div class="gname">お金（補助金・公庫） <a href="subsidy.html" style="margin-left:8px;font-weight:400">→ 詳しいタイムライン・融資の考え方を見る</a></div></div>
   <div class="grow"><div class="gname">借入要否の判断・創業支援/セミナー</div><div class="bars"><div class="bar b-todo" style="grid-column:1/3"></div></div></div>
   <div class="grow"><div class="gname">見積もり・創業計画書・公庫申込</div><div class="bars"><div class="bar b-todo" style="grid-column:2/3"></div></div></div>
   <div class="grow"><div class="gname">公庫 面談〜審査・着金（使う場合）</div><div class="bars"><div class="bar b-todo" style="grid-column:3/4"></div></div></div>
-  <div class="grow"><div class="gname">補助金（春回/秋回）へは開業後に申請</div><div class="bars"><div class="bar b-ms" style="grid-column:6/7">→ 開業後の回へ</div></div></div>
+  <div class="grow"><div class="gname">補助金（春回/秋回）へは開業後に申請</div><div class="bars"><div class="bar b-ms" style="grid-column:6/7"><a href="subsidy.html#timeline">→ 開業後の回へ</a></div></div></div>
 
   <div class="grow sec"><div class="gname">店づくり</div></div>
   <div class="grow"><div class="gname">レイアウト・工事内容・業者予約</div><div class="bars"><div class="bar b-todo" style="grid-column:3/4"></div></div></div>
@@ -168,7 +212,7 @@
 </div>
 <div class="legend">凡例：<span style="background:var(--accent)"></span>進行中<span style="background:var(--todo)"></span>これから<span style="background:var(--done)"></span>完了　◆＝節目</div>
 
-<h2>月ごとのやること</h2>
+<h2 id="monthly">月ごとのやること</h2>
 <div class="card" style="padding:0;overflow-x:auto">
 <table class="t">
   <tr><th style="width:120px">時期</th><th>やること</th><th style="width:220px">完了の目安</th></tr>
@@ -185,7 +229,7 @@
 </table>
 </div>
 
-<h2>決まったこと／まだ決まっていないこと</h2>
+<h2 id="undecided">決まったこと／まだ決まっていないこと</h2>
 <div class="grid g2">
   <div class="card">
     <b>決まったこと</b>
@@ -200,7 +244,7 @@
   </div>
   <div class="card">
     <b>まだ決まっていないこと</b>
-    <ul class="clean">
+    <ul class="clean" id="undecided-list">
       <li><span class="status s-warn">要交渉</span>契約開始日（どこまで後ろにずらせるか）と前金の扱い</li>
       <li><span class="status s-todo">未</span>保健所の事前相談（施術する部屋の広さ・設備）</li>
       <li><span class="status s-warn">見直し</span>補助金・公庫：12/15締切は見送り、開業後の春回/秋回へ。公庫（100万円目安・運転資金含む）を使うか11月末に決める → <a href="subsidy.html">詳細</a></li>
@@ -262,7 +306,7 @@
   <div class="gallery" style="grid-template-columns:1fr"><figure><a href="images/supplies-list.jpg" target="_blank"><img src="images/supplies-list.jpg" alt="備品・材料の手書きリスト" loading="lazy"></a><figcaption>備品・材料の手書きリスト（合計 約37万円）</figcaption></figure></div>
 </div>
 
-<h2>補助金で「新しいメニュー用の機器」を買う案（開業後の回で申請）</h2>
+<h2 id="subsidy-plan">補助金で「新しいメニュー用の機器」を買う案（開業後の回で申請）</h2>
 <div class="card">
   <p class="small" style="margin-top:0"><b>できます。</b>新しいメニューを始めて新しいお客様を増やすための機器は、「機械装置等費」として対象になります。ただし<b>交付決定のあとに注文・支払いした物だけ</b>です。申請は開業後の回になるので、交付決定は早くても2027年の秋以降の見込みです（日程未発表）。開業時に必要な物は外れます。そこで、開業時は基本メニュー（まつげエクステ・アイブロウ）で始め、<b>新メニューを交付決定のあとに追加する</b>形にします。</p>
   <table class="t">
@@ -276,6 +320,11 @@
   </table>
   <p class="small">一般型なら満額の50万円に75万円の支払いが必要（あと約25万円分）。創業型なら上限200万円まで広げられる。WAXの講習費は対象外の可能性が高い（講習・研修は対象経費に無い）。<b>交付決定の前に予約・前払いすると対象外</b>。どこまで対象になるかは、商工会に確認する。</p>
   <p class="small">申請書に書くストーリー（案）：開業後、LEDエクステ（硬化が速く持ちが良い・においが少ない）とまつ毛パーマを新メニューとして加え、看板・チラシ・ホームページで地域の新しいお客様に知らせる。</p>
+  <div class="cta-row">
+    <a class="btn-link" href="subsidy.html#timeline">春回・秋回のタイムライン目安を見る →</a>
+    <a class="btn-link-sub" href="subsidy.html#jfc">後払い補助金のつなぎ・公庫融資を見る →</a>
+    <a class="btn-link-sub" href="subsidy.html">補助金・公庫ページ全体へ →</a>
+  </div>
 </div>
 
 <h2>チェアの買い先の比較</h2>
@@ -391,6 +440,44 @@
     var open=new Date(2027,3,1), now=new Date();
     var d=Math.ceil((open-now)/86400000);
     if(d>0){document.getElementById('cd-open').textContent='4月1日まであと '+d+' 日';}
+
+    var toggle=document.getElementById('sticky-toggle');
+    var panel=document.getElementById('sticky-panel');
+    var arrow=document.getElementById('sticky-arrow');
+    var list=document.getElementById('sticky-list');
+    var tabs=document.querySelectorAll('.sticky-tab');
+    var currentTab='todo';
+
+    function renderTab(tab){
+      currentTab=tab;
+      var src=document.getElementById(tab==='undecided' ? 'undecided-list' : 'todo-list');
+      if(src && list){list.innerHTML=src.innerHTML;}
+      for(var i=0;i<tabs.length;i++){
+        tabs[i].classList.toggle('on', tabs[i].getAttribute('data-tab')===tab);
+      }
+    }
+
+    if(toggle && panel){
+      renderTab('todo');
+      toggle.addEventListener('click', function(){
+        var isOpen=panel.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        arrow.textContent=isOpen ? '▲' : '▾';
+      });
+      for(var i=0;i<tabs.length;i++){
+        tabs[i].addEventListener('click', function(){
+          renderTab(this.getAttribute('data-tab'));
+        });
+      }
+      var navLinks=document.querySelectorAll('.sticky-todo a[href^="#"]');
+      for(var j=0;j<navLinks.length;j++){
+        navLinks[j].addEventListener('click', function(){
+          panel.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+          arrow.textContent='▾';
+        });
+      }
+    }
   })();
 </script>
 </body>
