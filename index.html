@@ -42,10 +42,14 @@
   .grow{display:grid;grid-template-columns:200px repeat(6,minmax(70px,1fr));min-width:640px;border-bottom:1px solid var(--line)}
   .grow:last-child{border-bottom:none}
   .grow.head{background:#faf8f4;font-size:12px;color:var(--sub);font-weight:700}
-  .grow.sec{background:#fbfaf7;font-size:12px;font-weight:700;color:var(--accent)}
-  .grow.sec .gname{grid-column:1/-1}
+  .grow.sec{display:block;background:#fbfaf7;font-size:12px;font-weight:700;color:var(--accent)}
+  .grow.sec .gname{display:inline-block;position:sticky;left:0;max-width:calc(100vw - 28px);background:#fbfaf7}
   .gname{padding:7px 10px;font-size:13px}
   .gcell{padding:7px 4px;text-align:center}
+  .gantt-float{position:fixed;top:0;z-index:50;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;background:#faf8f4;border:1px solid var(--line);border-top:none;box-shadow:0 4px 12px rgba(43,42,40,.08);pointer-events:none;display:none}
+  .gantt-float::-webkit-scrollbar{display:none}
+  .gantt-float.show{display:block}
+  .gantt-float .grow.head{border-bottom:none}
   .bars{grid-column:2/-1;display:grid;grid-template-columns:repeat(6,1fr);align-items:center;position:relative;
     background-image:linear-gradient(to right,var(--line) 1px,transparent 1px);background-size:calc(100%/6) 100%}
   .bar{height:16px;border-radius:4px;margin:0 4px}
@@ -79,20 +83,7 @@
   .cta-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;align-items:center}
   .btn-link{display:inline-block;font-size:13px;font-weight:700;text-decoration:none;color:#4d5f44;background:var(--accent-soft);border:1px solid #cfd8c8;border-radius:8px;padding:5px 12px}
   .btn-link-sub{display:inline-block;font-size:13px;text-decoration:none;color:var(--ink);background:#faf8f4;border:1px solid var(--line);border-radius:8px;padding:5px 12px}
-  h2[id]{scroll-margin-top:76px}
-  .sticky-todo{position:sticky;top:8px;z-index:60;margin:16px 0 4px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:10px;box-shadow:0 4px 16px rgba(43,42,40,.08)}
-  .sticky-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;flex-wrap:wrap}
-  .sticky-toggle{appearance:none;border:1px solid #cfd8c8;background:var(--accent-soft);color:#4d5f44;border-radius:8px;padding:5px 11px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
-  .sticky-toggle:hover{background:#dce4d5}
-  .sticky-nav{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:12px}
-  .sticky-nav a{text-decoration:none;color:var(--ink);border:1px solid var(--line);background:#faf8f4;border-radius:999px;padding:3px 10px;white-space:nowrap}
-  .sticky-nav a.accent{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700}
-  .sticky-panel{display:none;border-top:1px solid var(--line);padding:10px 14px 12px;max-height:50vh;overflow-y:auto;background:var(--card);border-radius:0 0 10px 10px}
-  .sticky-panel.open{display:block}
-  .sticky-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;align-items:center}
-  .sticky-tab{appearance:none;border:1px solid var(--line);background:#faf8f4;color:var(--sub);border-radius:999px;padding:3px 10px;font-size:12px;cursor:pointer;font-family:inherit}
-  .sticky-tab.on{background:var(--accent-soft);color:#4d5f44;border-color:#cfd8c8;font-weight:700}
-  .sticky-panel ul.clean li{padding:6px 0;font-size:13px}
+  h2[id]{scroll-margin-top:48px}
   .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .tscroll table.t{min-width:480px}
   .scroll-hint{display:none;font-size:11px;color:var(--sub);margin:0 0 6px}
@@ -115,12 +106,6 @@
     table.t.mcard td:first-child{font-weight:700;font-size:14px;padding-bottom:6px;margin-bottom:6px;border-bottom:1px dashed var(--line)}
     table.t.mcard td:empty{display:none}
     table.t.mcard td:not(:first-child)::before{content:attr(data-label);display:inline-block;font-size:11px;font-weight:700;color:var(--sub);background:#faf8f4;border:1px solid var(--line);border-radius:4px;padding:0 6px;margin-right:6px;vertical-align:1px}
-    .sticky-todo{top:4px;margin:12px 0 4px}
-    .sticky-bar{padding:6px 10px;gap:6px}
-    .sticky-toggle{width:100%;justify-content:space-between;padding:6px 10px;font-size:13px}
-    .sticky-nav{width:100%;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
-    .sticky-nav::-webkit-scrollbar{display:none}
-    .sticky-nav a{font-size:12px;padding:4px 10px}
     nav.site a{font-size:12px;padding:4px 10px}
   }
 </style>
@@ -135,29 +120,6 @@
   <div class="updated">最終更新 2026年11月15日</div>
   <nav class="site"><a class="on" href="index.html">進捗</a><a href="plan.html">計画の中身（コンセプト・メニュー・数字）</a><a href="subsidy.html">補助金・公庫</a></nav>
 </header>
-
-<div class="sticky-todo" id="sticky-todo">
-  <div class="sticky-bar">
-    <button type="button" class="sticky-toggle" id="sticky-toggle" aria-expanded="false" aria-controls="sticky-panel">
-      <span>やることを見る（〜11月末・未定）</span><span id="sticky-arrow">▾</span>
-    </button>
-    <div class="sticky-nav">
-      <a href="#todo">直近</a>
-      <a href="#monthly">月ごと</a>
-      <a href="#subsidy-plan">補助金案</a>
-      <a class="accent" href="subsidy.html">補助金・公庫 →</a>
-      <a href="#top">↑ 上へ</a>
-    </div>
-  </div>
-  <div class="sticky-panel" id="sticky-panel">
-    <div class="sticky-tabs">
-      <button type="button" class="sticky-tab on" data-tab="todo">直近2週間でやること</button>
-      <button type="button" class="sticky-tab" data-tab="undecided">まだ決まっていないこと</button>
-      <a href="#monthly" class="small" style="margin-left:auto" id="sticky-jump-monthly">月ごとの表へ ↓</a>
-    </div>
-    <ul class="clean" id="sticky-list"></ul>
-  </div>
-</div>
 
 <h2>いまの状況</h2>
 <div class="grid g3">
@@ -472,42 +434,40 @@
     var d=Math.ceil((open-now)/86400000);
     if(d>0){document.getElementById('cd-open').textContent='4月1日まであと '+d+' 日';}
 
-    var toggle=document.getElementById('sticky-toggle');
-    var panel=document.getElementById('sticky-panel');
-    var arrow=document.getElementById('sticky-arrow');
-    var list=document.getElementById('sticky-list');
-    var tabs=document.querySelectorAll('.sticky-tab');
-    var currentTab='todo';
+    var gantt=document.querySelector('.gantt');
+    var head=gantt && gantt.querySelector('.grow.head');
+    if(gantt && head){
+      var floatWrap=document.createElement('div');
+      floatWrap.className='gantt-float';
+      floatWrap.setAttribute('aria-hidden','true');
+      floatWrap.appendChild(head.cloneNode(true));
+      document.body.appendChild(floatWrap);
 
-    function renderTab(tab){
-      currentTab=tab;
-      var src=document.getElementById(tab==='undecided' ? 'undecided-list' : 'todo-list');
-      if(src && list){list.innerHTML=src.innerHTML;}
-      for(var i=0;i<tabs.length;i++){
-        tabs[i].classList.toggle('on', tabs[i].getAttribute('data-tab')===tab);
+      function syncGanttHead(){
+        var r=gantt.getBoundingClientRect();
+        var hh=head.offsetHeight || 34;
+        if(r.top<0 && r.bottom>hh+16){
+          floatWrap.style.left=r.left+'px';
+          floatWrap.style.width=r.width+'px';
+          if(!floatWrap.classList.contains('show')){
+            floatWrap.classList.add('show');
+          }
+          if(floatWrap.scrollLeft!==gantt.scrollLeft){
+            floatWrap.scrollLeft=gantt.scrollLeft;
+          }
+        }else{
+          floatWrap.classList.remove('show');
+        }
       }
-    }
 
-    if(toggle && panel){
-      renderTab('todo');
-      toggle.addEventListener('click', function(){
-        var isOpen=panel.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        arrow.textContent=isOpen ? '▲' : '▾';
-      });
-      for(var i=0;i<tabs.length;i++){
-        tabs[i].addEventListener('click', function(){
-          renderTab(this.getAttribute('data-tab'));
-        });
-      }
-      var navLinks=document.querySelectorAll('.sticky-todo a[href^="#"]');
-      for(var j=0;j<navLinks.length;j++){
-        navLinks[j].addEventListener('click', function(){
-          panel.classList.remove('open');
-          toggle.setAttribute('aria-expanded', 'false');
-          arrow.textContent='▾';
-        });
-      }
+      window.addEventListener('scroll', syncGanttHead, {passive:true});
+      window.addEventListener('resize', syncGanttHead, {passive:true});
+      gantt.addEventListener('scroll', function(){
+        if(floatWrap.classList.contains('show')){
+          floatWrap.scrollLeft=gantt.scrollLeft;
+        }
+      }, {passive:true});
+      syncGanttHead();
     }
   })();
 </script>
