@@ -50,6 +50,28 @@
   .tl li.key:before{background:var(--warn)} .tl li.done:before{background:var(--done)}
   .tl .d{font-weight:700} .tl .x{font-size:13px;color:var(--sub)}
   .ok{color:#4d5f44;font-weight:700} .ng{color:#8a5524;font-weight:700}
+  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tscroll table.t{min-width:480px}
+  .scroll-hint{display:none;font-size:11px;color:var(--sub);margin:0 0 6px}
+  @media (max-width:720px){
+    .wrap{padding:16px 12px 64px}
+    header h1{font-size:21px}
+    h2{font-size:16px;margin:28px 0 10px}
+    .big{font-size:15px;line-height:1.7}
+    .scroll-hint{display:block}
+    .num{white-space:normal}
+    .tscroll .num{white-space:nowrap}
+    table.t.kv th,table.t.kv td:first-child{width:34% !important;min-width:84px}
+    table.t.mcard,table.t.mcard tbody,table.t.mcard tr,table.t.mcard td{display:block;width:100% !important}
+    table.t.mcard thead,table.t.mcard tr.hdr{display:none}
+    table.t.mcard tr{border-bottom:2px solid var(--line);padding:10px 12px}
+    table.t.mcard tr:last-child{border-bottom:none}
+    table.t.mcard td{border-bottom:none;padding:3px 0;text-align:left !important;white-space:normal !important}
+    table.t.mcard td:first-child{font-weight:700;font-size:14px;padding-bottom:6px;margin-bottom:6px;border-bottom:1px dashed var(--line)}
+    table.t.mcard td:empty{display:none}
+    table.t.mcard td:not(:first-child)::before{content:attr(data-label);display:inline-block;font-size:11px;font-weight:700;color:var(--sub);background:#faf8f4;border:1px solid var(--line);border-radius:4px;padding:0 6px;margin-right:6px;vertical-align:1px}
+    nav.site a{font-size:12px;padding:4px 10px}
+  }
 </style></head>
 <body><div class="wrap">
 <header><div class="brand">sen ｜ Enjoy Life Forever ／ 千年先もきれいに</div><h1>補助金・公庫（タイムライン・融資・リンク）</h1>
@@ -72,16 +94,16 @@
 
 <h2 id="timeline">開業後に狙える補助金のタイムライン目安</h2>
 <p class="small">※ 2027年度の公式日程は未発表です。直近（2025〜2026年）の<b>年2回ペース（春回：3〜4月末締切・夏採択／秋回：11〜12月締切・翌春採択）</b>をもとにした目安です。</p>
-<div class="card" style="padding:0;overflow-x:auto">
-<table class="t">
-  <tr><th style="width:170px">段階</th><th>パターンA：2027年 春回に出す（早め）</th><th>パターンB：2027年 秋回に出す（余裕あり）</th></tr>
-  <tr><td><b>① 準備・証明書</b></td><td><b>2026年12月〜2027年3月</b><br>商工会で「特定創業支援」の証明書を取る・GビズID取得・見積もり</td><td><b>2027年1〜10月</b><br>※下の「1年ルール」に注意。継続支援の完了時期を商工会と合わせる</td></tr>
-  <tr><td><b>② 開業</b></td><td><b>2027年4月上旬</b><br>開業届・青色申告・営業開始・売上発生（売上台帳をつける）</td><td><b>2027年4月</b><br>基本メニューで開業し、売上実績と課題を積む</td></tr>
-  <tr><td><b>③ 様式4・電子申請</b></td><td><b>2027年4月中旬〜末（目安）</b><br>※春回締切が4月末だと開業直後でかなりタイト（5〜6月締切なら余裕あり）</td><td><b>2027年11〜12月ごろ（目安）</b><br>半年分の数字をもとに計画書を作れるので書きやすい</td></tr>
-  <tr><td><b>④ 採択発表</b></td><td><b>2027年7〜8月ごろ（目安）</b><br>締切から約3か月後。採択後に見積書を提出</td><td><b>2028年3月ごろ（目安）</b><br>締切から約3か月後。採択後に見積書を提出</td></tr>
-  <tr><td><b>⑤ 交付決定（購入OK）</b></td><td><b class="ok">2027年8〜10月ごろ（目安）</b><br><b>この日から初めて新メニュー機器・看板・HP等を発注＆支払いできる</b></td><td><b class="ok">2028年4〜5月ごろ（目安）</b><br><b>この日から初めて新メニュー機器・看板・HP等を発注＆支払いできる</b></td></tr>
-  <tr><td><b>⑥ 導入・支払い</b></td><td><b>2027年9〜11月ごろ</b><br>機器納品・支払い完了 → 新メニュー開始</td><td><b>2028年5〜7月ごろ</b><br>機器納品・支払い完了 → 新メニュー開始</td></tr>
-  <tr><td><b>⑦ 実績報告 → 入金</b></td><td><b>2027年末〜2028年春ごろ</b><br>実績報告 → 確定検査 → <b>精算払い（後払い）で入金</b></td><td><b>2028年秋〜冬ごろ</b><br>実績報告 → 確定検査 → <b>精算払い（後払い）で入金</b></td></tr>
+<div class="card" style="padding:0">
+<table class="t mcard">
+  <tr class="hdr"><th style="width:170px">段階</th><th>パターンA：2027年 春回に出す（早め）</th><th>パターンB：2027年 秋回に出す（余裕あり）</th></tr>
+  <tr><td><b>① 準備・証明書</b></td><td data-label="パターンA（2027春回）"><b>2026年12月〜2027年3月</b><br>商工会で「特定創業支援」の証明書を取る・GビズID取得・見積もり</td><td data-label="パターンB（2027秋回）"><b>2027年1〜10月</b><br>※下の「1年ルール」に注意。継続支援の完了時期を商工会と合わせる</td></tr>
+  <tr><td><b>② 開業</b></td><td data-label="パターンA（2027春回）"><b>2027年4月上旬</b><br>開業届・青色申告・営業開始・売上発生（売上台帳をつける）</td><td data-label="パターンB（2027秋回）"><b>2027年4月</b><br>基本メニューで開業し、売上実績と課題を積む</td></tr>
+  <tr><td><b>③ 様式4・電子申請</b></td><td data-label="パターンA（2027春回）"><b>2027年4月中旬〜末（目安）</b><br>※春回締切が4月末だと開業直後でかなりタイト（5〜6月締切なら余裕あり）</td><td data-label="パターンB（2027秋回）"><b>2027年11〜12月ごろ（目安）</b><br>半年分の数字をもとに計画書を作れるので書きやすい</td></tr>
+  <tr><td><b>④ 採択発表</b></td><td data-label="パターンA（2027春回）"><b>2027年7〜8月ごろ（目安）</b><br>締切から約3か月後。採択後に見積書を提出</td><td data-label="パターンB（2027秋回）"><b>2028年3月ごろ（目安）</b><br>締切から約3か月後。採択後に見積書を提出</td></tr>
+  <tr><td><b>⑤ 交付決定（購入OK）</b></td><td data-label="パターンA（2027春回）"><b class="ok">2027年8〜10月ごろ（目安）</b><br><b>この日から初めて新メニュー機器・看板・HP等を発注＆支払いできる</b></td><td data-label="パターンB（2027秋回）"><b class="ok">2028年4〜5月ごろ（目安）</b><br><b>この日から初めて新メニュー機器・看板・HP等を発注＆支払いできる</b></td></tr>
+  <tr><td><b>⑥ 導入・支払い</b></td><td data-label="パターンA（2027春回）"><b>2027年9〜11月ごろ</b><br>機器納品・支払い完了 → 新メニュー開始</td><td data-label="パターンB（2027秋回）"><b>2028年5〜7月ごろ</b><br>機器納品・支払い完了 → 新メニュー開始</td></tr>
+  <tr><td><b>⑦ 実績報告 → 入金</b></td><td data-label="パターンA（2027春回）"><b>2027年末〜2028年春ごろ</b><br>実績報告 → 確定検査 → <b>精算払い（後払い）で入金</b></td><td data-label="パターンB（2027秋回）"><b>2028年秋〜冬ごろ</b><br>実績報告 → 確定検査 → <b>精算払い（後払い）で入金</b></td></tr>
 </table>
 </div>
 
@@ -128,24 +150,29 @@
     ・<b>条件の良さ</b>：税務申告2期未満の創業時は原則<b>無担保・無保証人</b>。さらに「女性」＋「特定創業支援の証明書」で<b>特別利率B</b>になり、「創業支援貸付利率特例制度（▲0.65%）」と合わせると <b>年2.45〜3.85%目安</b>（2026年11月2日時点の公庫利率ベース）。繰り上げ返済の手数料も無料です。<br>
     ・<b>タイミングの鉄則</b>：物件契約や備品購入で通帳残高が減りきる<b>前</b>（仮押さえ・見積書の段階）に申し込む方が、自己資金の見栄えがよく審査で有利です。
   </p>
-  <table class="t">
-    <tr><th style="width:140px">時期</th><th>開業資金として借りる場合（目安100万円）</th><th>開業後の補助金つなぎで借りる場合</th></tr>
-    <tr><td><b>11月後半</b></td><td>自己資金と「借りるか／借りないか」を夫婦で決める。<br>証明書を取るなら有田川町の<b>創業セミナー（12/5・12、申込締切11/24）</b>か商工会継続支援を予約</td><td rowspan="4" style="vertical-align:middle">開業時は自己資金でスタートし、<b>2027年夏の採択後〜交付決定前後</b>に、新メニュー機器・看板等の見積書を持って公庫に申し込むルートもあり（開業後の売上実績も見せられる）。<br><span class="small">※ ただし売上や手元現金が落ちていると不利になるため、余裕があるうちの相談が安全。</span></td></tr>
+  <table class="t kv">
+    <tr><th style="width:140px">時期</th><th>開業資金として借りる場合（目安100万円）</th></tr>
+    <tr><td><b>11月後半</b></td><td>自己資金と「借りるか／借りないか」を夫婦で決める。<br>証明書を取るなら有田川町の<b>創業セミナー（12/5・12、申込締切11/24）</b>か商工会継続支援を予約</td></tr>
     <tr><td><b>12月</b></td><td>設備・備品・物件初期費用の<b>見積書</b>を集め、創業計画書を作成 → 公庫へ事前相談・正式申込</td></tr>
     <tr><td><b>2027年1月</b></td><td>公庫と面談（夫婦同席OK） → 審査（1〜2週間）</td></tr>
     <tr><td><b>1月末〜2月上旬</b></td><td>契約・<b>着金</b>（2月引渡し・備品発注・工事支払いに間に合う）</td></tr>
   </table>
+  <div class="callout-soft" style="margin-top:10px">
+    <b>別ルート：開業後の「補助金つなぎ」として借りる場合</b><br>
+    開業時は自己資金でスタートし、<b>2027年夏の採択後〜交付決定前後</b>に、新メニュー機器・看板等の見積書を持って公庫に申し込むルートもあります（開業後の売上実績も見せられます）。<br>
+    <span class="small">※ ただし売上や手元現金が落ちていると不利になるため、余裕があるうちの相談が安全です。</span>
+  </div>
 </div>
 
 <h2>一般型と創業型のちがい</h2>
-<div class="card" style="padding:0;overflow-x:auto">
-<table class="t">
-  <tr><th style="width:130px"></th><th>一般型（通常枠）</th><th>創業型</th></tr>
-  <tr><td>補助率・上限</td><td>2/3・<b>50万円</b>（インボイス特例で+50万円）</td><td>2/3・<b>200万円</b>（インボイス特例で+50万円）</td></tr>
-  <tr><td>申請できる人</td><td>開業していて売上がある小規模事業者（開業からの年数は問わない）</td><td>締切から過去1年以内に開業＋「特定創業支援」を受けた人（<b>支援を受けた日も1年以内</b>）</td></tr>
-  <tr><td>商工会の書類</td><td>様式4（事業支援計画書）</td><td>様式4＋特定創業支援の証明書（町が発行）</td></tr>
-  <tr><td>同時申請</td><td colspan="2">一般型と創業型は同時に申請できない。片方の申請中・採択中はもう片方に申請できない</td></tr>
-  <tr><td>うちに合うのは</td><td>開業後、売上が出てから。小さく確実に（機器＋広報で上限50万円＝支出75万円規模）</td><td><b>開業後1年以内の回。</b>新メニュー機器・看板・ホームページなどをまとめて大きく</td></tr>
+<div class="card" style="padding:0">
+<table class="t mcard">
+  <tr class="hdr"><th style="width:130px"></th><th>一般型（通常枠）</th><th>創業型</th></tr>
+  <tr><td>補助率・上限</td><td data-label="一般型（通常枠）">2/3・<b>50万円</b>（インボイス特例で+50万円）</td><td data-label="創業型">2/3・<b>200万円</b>（インボイス特例で+50万円）</td></tr>
+  <tr><td>申請できる人</td><td data-label="一般型（通常枠）">開業していて売上がある小規模事業者（開業からの年数は問わない）</td><td data-label="創業型">締切から過去1年以内に開業＋「特定創業支援」を受けた人（<b>支援を受けた日も1年以内</b>）</td></tr>
+  <tr><td>商工会の書類</td><td data-label="一般型（通常枠）">様式4（事業支援計画書）</td><td data-label="創業型">様式4＋特定創業支援の証明書（町が発行）</td></tr>
+  <tr><td>同時申請</td><td colspan="2" data-label="共通ルール">一般型と創業型は同時に申請できない。片方の申請中・採択中はもう片方に申請できない</td></tr>
+  <tr><td>うちに合うのは</td><td data-label="一般型（通常枠）">開業後、売上が出てから。小さく確実に（機器＋広報で上限50万円＝支出75万円規模）</td><td data-label="創業型"><b>開業後1年以内の回。</b>新メニュー機器・看板・ホームページなどをまとめて大きく</td></tr>
 </table>
 </div>
 
@@ -166,15 +193,15 @@
 </div>
 
 <h2>申請に必要な物</h2>
-<div class="card" style="padding:0;overflow-x:auto">
-<table class="t">
-  <tr><th style="width:220px">書類</th><th>中身・準備</th></tr>
-  <tr><td>様式1・2・3・5・6</td><td>申請書・経営計画兼補助事業計画・補助事業計画②・交付申請書・宣誓同意書。<b>電子申請システムに直接入力</b>（添付不要）</td></tr>
-  <tr><td>様式4（事業支援計画書）</td><td>商工会が発行。電子申請システムから商工会に依頼し、窓口で面談して発行してもらう</td></tr>
-  <tr><td>開業届の写し＋売上台帳</td><td>確定申告をまだしたことが無い個人の場合。開業日が書かれていない開業届は無効。マイナンバーは黒塗り</td></tr>
-  <tr><td>（創業型のみ）特定創業支援の証明書</td><td>商工会の継続支援（1か月以上・4回以上）または創業セミナーを受けたあと、町が発行</td></tr>
-  <tr><td>GビズIDプライム</td><td>電子申請のログインに必須。採択後の手続きにも使う</td></tr>
-  <tr><td>見積書（採択後）</td><td>交付決定の前に提出。100万円（税込）超は2社以上</td></tr>
+<div class="card" style="padding:0">
+<table class="t mcard">
+  <tr class="hdr"><th style="width:220px">書類</th><th>中身・準備</th></tr>
+  <tr><td>様式1・2・3・5・6</td><td data-label="中身・準備">申請書・経営計画兼補助事業計画・補助事業計画②・交付申請書・宣誓同意書。<b>電子申請システムに直接入力</b>（添付不要）</td></tr>
+  <tr><td>様式4（事業支援計画書）</td><td data-label="中身・準備">商工会が発行。電子申請システムから商工会に依頼し、窓口で面談して発行してもらう</td></tr>
+  <tr><td>開業届の写し＋売上台帳</td><td data-label="中身・準備">確定申告をまだしたことが無い個人の場合。開業日が書かれていない開業届は無効。マイナンバーは黒塗り</td></tr>
+  <tr><td>（創業型のみ）特定創業支援の証明書</td><td data-label="中身・準備">商工会の継続支援（1か月以上・4回以上）または創業セミナーを受けたあと、町が発行</td></tr>
+  <tr><td>GビズIDプライム</td><td data-label="中身・準備">電子申請のログインに必須。採択後の手続きにも使う</td></tr>
+  <tr><td>見積書（採択後）</td><td data-label="中身・準備">交付決定の前に提出。100万円（税込）超は2社以上</td></tr>
 </table>
 </div>
 

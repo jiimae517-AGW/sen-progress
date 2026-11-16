@@ -93,6 +93,36 @@
   .sticky-tab{appearance:none;border:1px solid var(--line);background:#faf8f4;color:var(--sub);border-radius:999px;padding:3px 10px;font-size:12px;cursor:pointer;font-family:inherit}
   .sticky-tab.on{background:var(--accent-soft);color:#4d5f44;border-color:#cfd8c8;font-weight:700}
   .sticky-panel ul.clean li{padding:6px 0;font-size:13px}
+  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tscroll table.t{min-width:480px}
+  .scroll-hint{display:none;font-size:11px;color:var(--sub);margin:0 0 6px}
+  @media (max-width:720px){
+    .wrap{padding:16px 12px 64px}
+    header h1{font-size:22px}
+    h2{font-size:16px;margin:28px 0 10px}
+    .scroll-hint{display:block}
+    .grow{grid-template-columns:145px repeat(6,minmax(54px,1fr));min-width:469px}
+    .grow:not(.sec) .gname{position:sticky;left:0;z-index:2;background:var(--card);border-right:1px solid var(--line)}
+    .grow.head .gname{background:#faf8f4}
+    .num{white-space:normal}
+    .tscroll .num{white-space:nowrap}
+    table.t.kv th,table.t.kv td:first-child{width:34% !important;min-width:84px}
+    table.t.mcard,table.t.mcard tbody,table.t.mcard tr,table.t.mcard td{display:block;width:100% !important}
+    table.t.mcard thead,table.t.mcard tr.hdr{display:none}
+    table.t.mcard tr{border-bottom:2px solid var(--line);padding:10px 12px}
+    table.t.mcard tr:last-child{border-bottom:none}
+    table.t.mcard td{border-bottom:none;padding:3px 0;text-align:left !important;white-space:normal !important}
+    table.t.mcard td:first-child{font-weight:700;font-size:14px;padding-bottom:6px;margin-bottom:6px;border-bottom:1px dashed var(--line)}
+    table.t.mcard td:empty{display:none}
+    table.t.mcard td:not(:first-child)::before{content:attr(data-label);display:inline-block;font-size:11px;font-weight:700;color:var(--sub);background:#faf8f4;border:1px solid var(--line);border-radius:4px;padding:0 6px;margin-right:6px;vertical-align:1px}
+    .sticky-todo{top:4px;margin:12px 0 4px}
+    .sticky-bar{padding:6px 10px;gap:6px}
+    .sticky-toggle{width:100%;justify-content:space-between;padding:6px 10px;font-size:13px}
+    .sticky-nav{width:100%;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+    .sticky-nav::-webkit-scrollbar{display:none}
+    .sticky-nav a{font-size:12px;padding:4px 10px}
+    nav.site a{font-size:12px;padding:4px 10px}
+  }
 </style>
 </head>
 <body id="top">
@@ -180,6 +210,7 @@
 </div>
 
 <h2 id="gantt">4月開業までの流れ</h2>
+<p class="scroll-hint">← 左右にスクロールして全体を見られます</p>
 <div class="gantt">
   <div class="grow head"><div class="gname">やること</div><div class="gcell">11月</div><div class="gcell">12月</div><div class="gcell">1月</div><div class="gcell">2月</div><div class="gcell">3月</div><div class="gcell">4月</div></div>
 
@@ -213,19 +244,19 @@
 <div class="legend">凡例：<span style="background:var(--accent)"></span>進行中<span style="background:var(--todo)"></span>これから<span style="background:var(--done)"></span>完了　◆＝節目</div>
 
 <h2 id="monthly">月ごとのやること</h2>
-<div class="card" style="padding:0;overflow-x:auto">
-<table class="t">
-  <tr><th style="width:120px">時期</th><th>やること</th><th style="width:220px">完了の目安</th></tr>
-  <tr><td>11月末</td><td>契約開始日・前金・部屋番号・駐車場を詰め、前金で部屋を押さえる。保健所へ図面で事前相談。メニュー・営業日・時間を決める。<b>自己資金と公庫で借りるか（創業セミナー11/24締切）を決める</b></td><td>部屋を押さえ、融資・創業支援の方針が決まる</td></tr>
-  <tr><td>12月前半</td><td>契約（契約日・鍵渡し日を確定）。保健所の指摘から必要な工事を決める。商工会に補助金（春回/秋回の1年ルール）と継続支援を相談</td><td>物件が確定し、必要な工事が分かる</td></tr>
-  <tr><td>12月中旬〜末</td><td>内装・設備・備品の見積もり。初期費用と運転資金の総額を確定。<b>公庫を使うなら見積書・創業計画書を揃えて事前相談・正式申込</b>（通帳残高が減る前に動く）</td><td>必要資金と調達方法が決まり、申込完了</td></tr>
-  <tr><td>1月前半</td><td>レイアウト・工事内容を確定し業者を3月頭で予約。備品を選んで発注（チェアは注文から約2週間→引き渡し後に届くよう2月前半に注文）。Wi-Fiを申し込む。<b>公庫を使う場合は面談・審査</b></td><td>引き渡し後の作業が具体化する</td></tr>
-  <tr><td>1月後半</td><td>店名・メニュー・料金を確定。LINE・Instagram・予約方法、カウンセリング票・同意書、会計方法を準備。<b>公庫を使う場合は月末〜2月初めに契約・着金</b></td><td>お客様を受け入れる仕組みと資金が整う</td></tr>
-  <tr><td>2月前半</td><td>電気・水道・ネットを引き渡し日から使えるよう手配。店舗用の火災保険・賠償保険。工事・搬入日程を確定</td><td>引き渡し後の予定が組める</td></tr>
-  <tr><td>2月中</td><td>引き渡し。室内の傷・設備を確認して撮影。採寸・最終確認</td><td>店づくりに着手できる</td></tr>
-  <tr><td>3月前半</td><td>工事・設備設置・搬入。美容所の開設届を出し、検査日を決める</td><td>店の形ができる</td></tr>
-  <tr><td>3月後半</td><td>保健所の検査。動線確認・練習・モニター施術。開業告知と予約受付開始</td><td>検査に通り、予約を受けられる</td></tr>
-  <tr><td>4月</td><td>開業。開業届（開業から1か月以内）・青色申告承認申請（2か月以内）</td><td>営業開始</td></tr>
+<div class="card" style="padding:0">
+<table class="t mcard">
+  <tr class="hdr"><th style="width:120px">時期</th><th>やること</th><th style="width:220px">完了の目安</th></tr>
+  <tr><td>11月末</td><td data-label="やること">契約開始日・前金・部屋番号・駐車場を詰め、前金で部屋を押さえる。保健所へ図面で事前相談。メニュー・営業日・時間を決める。<b>自己資金と公庫で借りるか（創業セミナー11/24締切）を決める</b></td><td data-label="完了の目安">部屋を押さえ、融資・創業支援の方針が決まる</td></tr>
+  <tr><td>12月前半</td><td data-label="やること">契約（契約日・鍵渡し日を確定）。保健所の指摘から必要な工事を決める。商工会に補助金（春回/秋回の1年ルール）と継続支援を相談</td><td data-label="完了の目安">物件が確定し、必要な工事が分かる</td></tr>
+  <tr><td>12月中旬〜末</td><td data-label="やること">内装・設備・備品の見積もり。初期費用と運転資金の総額を確定。<b>公庫を使うなら見積書・創業計画書を揃えて事前相談・正式申込</b>（通帳残高が減る前に動く）</td><td data-label="完了の目安">必要資金と調達方法が決まり、申込完了</td></tr>
+  <tr><td>1月前半</td><td data-label="やること">レイアウト・工事内容を確定し業者を3月頭で予約。備品を選んで発注（チェアは注文から約2週間→引き渡し後に届くよう2月前半に注文）。Wi-Fiを申し込む。<b>公庫を使う場合は面談・審査</b></td><td data-label="完了の目安">引き渡し後の作業が具体化する</td></tr>
+  <tr><td>1月後半</td><td data-label="やること">店名・メニュー・料金を確定。LINE・Instagram・予約方法、カウンセリング票・同意書、会計方法を準備。<b>公庫を使う場合は月末〜2月初めに契約・着金</b></td><td data-label="完了の目安">お客様を受け入れる仕組みと資金が整う</td></tr>
+  <tr><td>2月前半</td><td data-label="やること">電気・水道・ネットを引き渡し日から使えるよう手配。店舗用の火災保険・賠償保険。工事・搬入日程を確定</td><td data-label="完了の目安">引き渡し後の予定が組める</td></tr>
+  <tr><td>2月中</td><td data-label="やること">引き渡し。室内の傷・設備を確認して撮影。採寸・最終確認</td><td data-label="完了の目安">店づくりに着手できる</td></tr>
+  <tr><td>3月前半</td><td data-label="やること">工事・設備設置・搬入。美容所の開設届を出し、検査日を決める</td><td data-label="完了の目安">店の形ができる</td></tr>
+  <tr><td>3月後半</td><td data-label="やること">保健所の検査。動線確認・練習・モニター施術。開業告知と予約受付開始</td><td data-label="完了の目安">検査に通り、予約を受けられる</td></tr>
+  <tr><td>4月</td><td data-label="やること">開業。開業届（開業から1か月以内）・青色申告承認申請（2か月以内）</td><td data-label="完了の目安">営業開始</td></tr>
 </table>
 </div>
 
@@ -269,7 +300,7 @@
   <div class="card">
     <b>施術チェア</b>
     <p class="small" style="margin:6px 0">電動垂直昇降リクライニングチェア T01 アドバンス（7beauty）。ベッドではなくチェアで施術する前提。</p>
-    <table class="t">
+    <table class="t kv">
       <tr><th style="width:110px">価格</th><td>96,800円（税込）。送料・組立設置は別</td></tr>
       <tr><th>大きさ</th><td>通常 幅84×奥行89cm／ほぼフラット時 長さ約180cm</td></tr>
       <tr><th>置き場所の目安</th><td>フラット時の長さ180cm＋頭側の作業スペース約70cm、左右に各60cm前後 → 約2.5m×2.0m</td></tr>
@@ -292,14 +323,14 @@
 <h2>開業時の備品・材料（約37万円）</h2>
 <div class="grid g2">
   <div class="card">
-    <table class="t">
-      <tr><th>区分</th><th>主な中身</th><th class="num">小計</th></tr>
-      <tr><td>アイブロウ</td><td>パレット・眉ペン4色・パウダー・ブラシ・シザーなど（WAXは講習 99,000円を受けるか検討中。最初はシートWAXでも可）</td><td class="num">約2.0万円</td></tr>
-      <tr><td>まつ毛パーマ</td><td>パーマ液2種・ロッド一式（51,730円）・シート・グルー・プレートなど</td><td class="num">約6.5万円</td></tr>
-      <tr><td>エクステ</td><td>MIXシート6種・ミスアイドール・LEDスターターキット（80,800円）・前処理・シャンプーなど</td><td class="num">約10.8万円</td></tr>
-      <tr><td>小物</td><td>テープ・マイクロファイバーチップ・消毒液・タイマーなど</td><td class="num">約1.0万円</td></tr>
-      <tr><td>設備</td><td>チェア（ソファ）99,000円・ハーフムーン 24,200円・ライト 15,620円・ワゴン・イス・消耗品</td><td class="num">約16.9万円</td></tr>
-      <tr><td><b>合計</b></td><td></td><td class="num"><b>約37万円</b></td></tr>
+    <table class="t mcard">
+      <tr class="hdr"><th style="width:96px">区分</th><th>主な中身</th><th class="num">小計</th></tr>
+      <tr><td>アイブロウ</td><td data-label="主な中身">パレット・眉ペン4色・パウダー・ブラシ・シザーなど（WAXは講習 99,000円を受けるか検討中。最初はシートWAXでも可）</td><td class="num" data-label="小計">約2.0万円</td></tr>
+      <tr><td>まつ毛パーマ</td><td data-label="主な中身">パーマ液2種・ロッド一式（51,730円）・シート・グルー・プレートなど</td><td class="num" data-label="小計">約6.5万円</td></tr>
+      <tr><td>エクステ</td><td data-label="主な中身">MIXシート6種・ミスアイドール・LEDスターターキット（80,800円）・前処理・シャンプーなど</td><td class="num" data-label="小計">約10.8万円</td></tr>
+      <tr><td>小物</td><td data-label="主な中身">テープ・マイクロファイバーチップ・消毒液・タイマーなど</td><td class="num" data-label="小計">約1.0万円</td></tr>
+      <tr><td>設備</td><td data-label="主な中身">チェア（ソファ）99,000円・ハーフムーン 24,200円・ライト 15,620円・ワゴン・イス・消耗品</td><td class="num" data-label="小計">約16.9万円</td></tr>
+      <tr><td><b>合計</b></td><td></td><td class="num" data-label="小計"><b>約37万円</b></td></tr>
     </table>
     <p class="small">この中に入っていない物：パーテーション（約3.2万円）、床のタイル（約6.5万〜20万円）、掃除機（約3〜5万円）、洗濯機＋乾燥機（約14万円）、看板・チラシ・ホームページ、WAX講習。</p>
   </div>
@@ -309,14 +340,14 @@
 <h2 id="subsidy-plan">補助金で「新しいメニュー用の機器」を買う案（開業後の回で申請）</h2>
 <div class="card">
   <p class="small" style="margin-top:0"><b>できます。</b>新しいメニューを始めて新しいお客様を増やすための機器は、「機械装置等費」として対象になります。ただし<b>交付決定のあとに注文・支払いした物だけ</b>です。申請は開業後の回になるので、交付決定は早くても2027年の秋以降の見込みです（日程未発表）。開業時に必要な物は外れます。そこで、開業時は基本メニュー（まつげエクステ・アイブロウ）で始め、<b>新メニューを交付決定のあとに追加する</b>形にします。</p>
-  <table class="t">
-    <tr><th>交付決定のあとに買う物（案）</th><th class="num">金額</th><th>対象になるか</th></tr>
-    <tr><td>LEDエクステ（LEDスターターキット：ライト・ゴーグルなど）</td><td class="num">80,800円</td><td>○ 機器は対象。グルー・シートなどの消耗品は外れる可能性</td></tr>
-    <tr><td>まつ毛パーマのロッド一式</td><td class="num">51,730円</td><td>△ 繰り返し使う器具なので対象の可能性。パーマ液は消耗品で外れる可能性</td></tr>
-    <tr><td>看板（店の外・窓）</td><td class="num">15万円（仮定）</td><td>○ 広報費</td></tr>
-    <tr><td>チラシ作成・配布</td><td class="num">10万円（仮定）</td><td>○ 広報費</td></tr>
-    <tr><td>ホームページ・予約ページ</td><td class="num">12万円（仮定）</td><td>○ ただし補助額の1/4まで。ホームページだけでの申請は不可</td></tr>
-    <tr><td><b>合計</b></td><td class="num"><b>約50万円</b></td><td><b>補助（2/3）＝約33.5万円</b></td></tr>
+  <table class="t mcard">
+    <tr class="hdr"><th>交付決定のあとに買う物（案）</th><th class="num">金額</th><th>対象になるか</th></tr>
+    <tr><td>LEDエクステ（LEDスターターキット：ライト・ゴーグルなど）</td><td class="num" data-label="金額">80,800円</td><td data-label="対象になるか">○ 機器は対象。グルー・シートなどの消耗品は外れる可能性</td></tr>
+    <tr><td>まつ毛パーマのロッド一式</td><td class="num" data-label="金額">51,730円</td><td data-label="対象になるか">△ 繰り返し使う器具なので対象の可能性。パーマ液は消耗品で外れる可能性</td></tr>
+    <tr><td>看板（店の外・窓）</td><td class="num" data-label="金額">15万円（仮定）</td><td data-label="対象になるか">○ 広報費</td></tr>
+    <tr><td>チラシ作成・配布</td><td class="num" data-label="金額">10万円（仮定）</td><td data-label="対象になるか">○ 広報費</td></tr>
+    <tr><td>ホームページ・予約ページ</td><td class="num" data-label="金額">12万円（仮定）</td><td data-label="対象になるか">○ ただし補助額の1/4まで。ホームページだけでの申請は不可</td></tr>
+    <tr><td><b>合計</b></td><td class="num" data-label="金額"><b>約50万円</b></td><td data-label="対象になるか"><b>補助（2/3）＝約33.5万円</b></td></tr>
   </table>
   <p class="small">一般型なら満額の50万円に75万円の支払いが必要（あと約25万円分）。創業型なら上限200万円まで広げられる。WAXの講習費は対象外の可能性が高い（講習・研修は対象経費に無い）。<b>交付決定の前に予約・前払いすると対象外</b>。どこまで対象になるかは、商工会に確認する。</p>
   <p class="small">申請書に書くストーリー（案）：開業後、LEDエクステ（硬化が速く持ちが良い・においが少ない）とまつ毛パーマを新メニューとして加え、看板・チラシ・ホームページで地域の新しいお客様に知らせる。</p>
@@ -328,34 +359,34 @@
 </div>
 
 <h2>チェアの買い先の比較</h2>
-<div class="card" style="padding:0;overflow-x:auto">
-<table class="t">
-  <tr><th style="width:170px">買い先</th><th>候補と価格（税込）</th><th style="width:230px">実物を見られる場所</th></tr>
+<div class="card" style="padding:0">
+<table class="t mcard">
+  <tr class="hdr"><th style="width:170px">買い先</th><th>候補と価格（税込）</th><th style="width:230px">実物を見られる場所</th></tr>
   <tr><td><b>SEVEN BEAUTY</b><br><span class="small">7beauty.jp／東京・台東区のメーカー兼通販</span></td>
-      <td><b>T01 アドバンス 96,800円</b>（昇降 最大20cm・3モーター・メモリー機能）。スリム版あり。送料・組立設置は別</td>
-      <td>大阪にストアがあるという情報あり（要確認）。機器営業部 03-5812-4455（平日9:30〜18:30）で、大阪で座れるか確認する</td></tr>
+      <td data-label="候補と価格（税込）"><b>T01 アドバンス 96,800円</b>（昇降 最大20cm・3モーター・メモリー機能）。スリム版あり。送料・組立設置は別</td>
+      <td data-label="実物を見られる場所">大阪にストアがあるという情報あり（要確認）。機器営業部 03-5812-4455（平日9:30〜18:30）で、大阪で座れるか確認する</td></tr>
   <tr><td><b>ビューティガレージ</b><br><span class="small">プロ向け通販・会員価格</span></td>
-      <td>SHIFFON LUXE 96,800円（昇降18cm）／DITE 141,900円（昇降約15cm）／シエロplus 82,500円・SHIFFON 72,380円・SHIFFON Jr 71,280円・SISTA neo 65,780円（いずれも昇降なし）</td>
-      <td>大阪ショールーム（大阪市西区新町・10〜18時・予約制・駐車場なし）。展示機種は要問い合わせ</td></tr>
+      <td data-label="候補と価格（税込）">SHIFFON LUXE 96,800円（昇降18cm）／DITE 141,900円（昇降約15cm）／シエロplus 82,500円・SHIFFON 72,380円・SHIFFON Jr 71,280円・SISTA neo 65,780円（いずれも昇降なし）</td>
+      <td data-label="実物を見られる場所">大阪ショールーム（大阪市西区新町・10〜18時・予約制・駐車場なし）。展示機種は要問い合わせ</td></tr>
   <tr><td><b>タカラベルモント</b><br><span class="small">国内大手メーカー</span></td>
-      <td>アイラッシュチェア「Riche」など。価格は販売店の見積もり</td>
-      <td>大阪・長堀橋のショールーム</td></tr>
+      <td data-label="候補と価格（税込）">アイラッシュチェア「Riche」など。価格は販売店の見積もり</td>
+      <td data-label="実物を見られる場所">大阪・長堀橋のショールーム</td></tr>
   <tr><td><b>和歌山の美容ディーラー</b></td>
-      <td>ネットでは、和歌山でまつげ用チェアを扱う店は見つからなかった</td>
-      <td>いまの商材（グルー・まつげ）の仕入れ先に、チェアも取り寄せられるか聞く</td></tr>
+      <td data-label="候補と価格（税込）">ネットでは、和歌山でまつげ用チェアを扱う店は見つからなかった</td>
+      <td data-label="実物を見られる場所">いまの商材（グルー・まつげ）の仕入れ先に、チェアも取り寄せられるか聞く</td></tr>
 </table>
 </div>
 <p class="small">比べると：同じ96,800円ならT01の方が昇降幅が大きい（20cm と 18cm）。昇降があると施術者の腰の負担が減る。昇降なしでよければ約7万円から。買う前に大阪で一度座って、高さとリモコンの使いやすさを確かめるのがおすすめ。</p>
 
 <h2>Wi-Fi（置くだけWi-Fi）の比較</h2>
-<div class="card" style="padding:0;overflow-x:auto">
-<table class="t">
-  <tr><th style="width:150px">サービス</th><th>月額（税込）</th><th>キャンペーン（2026年11月時点）</th><th style="width:120px">2年の実質月額</th><th>ポイント</th></tr>
-  <tr><td><b>ドコモ home 5G</b></td><td>5,280円・端末実質0円・解約金0円</td><td>dポイント15,000pt（乗り換えなら追加あり）</td><td class="num">約4,400〜4,700円</td><td>速さの評価が高い。登録した住所でしか使えない</td></tr>
-  <tr><td><b>ソフトバンクエアー</b></td><td>4,950円（25か月目〜5,368円）※12/1から各330円値上げ</td><td>最大45,000円（年齢・機種など条件あり）</td><td class="num">約3,400円</td><td>登録した住所でしか使えない</td></tr>
-  <tr><td><b>モバレコAir</b>（ソフトバンク回線）</td><td>初月1,320円→3,080円→4,180円（13か月目〜）</td><td>最大39,500円（12か月目ごろ受け取り）</td><td class="num">約1,900円</td><td>回線はソフトバンクエアーと同じで安い。受け取り手続きを忘れないこと</td></tr>
-  <tr><td><b>とくとくBB ホームWi-Fi</b>（WiMAX）</td><td>390円（〜5か月）→4,763円・端末代924円×36回</td><td>30,000円（優待コード入力）</td><td class="num">約3,500円</td><td>36か月より前に解約すると端末代の残りを払う</td></tr>
-  <tr><td><b>Rakuten Turbo</b></td><td>―</td><td>楽天モバイル利用者は毎月ポイント</td><td class="num">約5,000円</td><td>楽天モバイルを使っている場合だけ候補</td></tr>
+<div class="card" style="padding:0">
+<table class="t mcard">
+  <tr class="hdr"><th style="width:150px">サービス</th><th>月額（税込）</th><th>キャンペーン（2026年11月時点）</th><th style="width:120px">2年の実質月額</th><th>ポイント</th></tr>
+  <tr><td><b>ドコモ home 5G</b></td><td data-label="月額（税込）">5,280円・端末実質0円・解約金0円</td><td data-label="キャンペーン（2026年11月時点）">dポイント15,000pt（乗り換えなら追加あり）</td><td class="num" data-label="2年の実質月額">約4,400〜4,700円</td><td data-label="ポイント">速さの評価が高い。登録した住所でしか使えない</td></tr>
+  <tr><td><b>ソフトバンクエアー</b></td><td data-label="月額（税込）">4,950円（25か月目〜5,368円）※12/1から各330円値上げ</td><td data-label="キャンペーン（2026年11月時点）">最大45,000円（年齢・機種など条件あり）</td><td class="num" data-label="2年の実質月額">約3,400円</td><td data-label="ポイント">登録した住所でしか使えない</td></tr>
+  <tr><td><b>モバレコAir</b>（ソフトバンク回線）</td><td data-label="月額（税込）">初月1,320円→3,080円→4,180円（13か月目〜）</td><td data-label="キャンペーン（2026年11月時点）">最大39,500円（12か月目ごろ受け取り）</td><td class="num" data-label="2年の実質月額">約1,900円</td><td data-label="ポイント">回線はソフトバンクエアーと同じで安い。受け取り手続きを忘れないこと</td></tr>
+  <tr><td><b>とくとくBB ホームWi-Fi</b>（WiMAX）</td><td data-label="月額（税込）">390円（〜5か月）→4,763円・端末代924円×36回</td><td data-label="キャンペーン（2026年11月時点）">30,000円（優待コード入力）</td><td class="num" data-label="2年の実質月額">約3,500円</td><td data-label="ポイント">36か月より前に解約すると端末代の残りを払う</td></tr>
+  <tr><td><b>Rakuten Turbo</b></td><td data-label="月額（税込）">―</td><td data-label="キャンペーン（2026年11月時点）">楽天モバイル利用者は毎月ポイント</td><td class="num" data-label="2年の実質月額">約5,000円</td><td data-label="ポイント">楽天モバイルを使っている場合だけ候補</td></tr>
 </table>
 </div>
 <p class="small"><b>おすすめ：ドコモ home 5G（安定重視）か モバレコAir（安さ重視）。</b>家族のスマホと同じ会社にするとセット割が付くことがある。申込は店の住所で、<b>引き渡しが決まってから（2月）</b>。キャンペーンは月ごとに変わるので、申し込む時にもう一度比べる。店の場所が5Gエリアかは各社のエリアマップで確認。</p>
@@ -363,11 +394,11 @@
 <h2>床：モルタル調フロアタイルを上から敷く</h2>
 <div class="card">
   <p class="small" style="margin-top:0">敷く広さ：LDK 10帖＋洋室 4.5帖 ＝ 約23.5㎡（1帖＝1.62㎡で計算）。切り落としのロス10%を足して<b>約26㎡分</b>を買う。接着剤を使わない「置き敷き」なら、退去時に剥がして戻せる。</p>
-  <table class="t">
-    <tr><th>やり方</th><th class="num">1㎡あたり</th><th class="num">全体（約26㎡）</th><th>メモ</th></tr>
-    <tr><td>通販の「置くだけ」吸着タイル（自分で敷く）</td><td class="num">約2,500〜4,500円（仮定）</td><td class="num">約6.5万〜12万円</td><td>一番安い。厚み・重さがある物ほどズレにくい</td></tr>
-    <tr><td>メーカーの置き敷き材（例：シンコール「置敷」）を自分で敷く</td><td class="num">約6,160円（税別5,600円）</td><td class="num">約16万円</td><td>業務用の品質。東リ「ピタフィー」にもモルタル柄あり（価格は要確認）</td></tr>
-    <tr><td>業者に頼む（材料＋施工）</td><td class="num">約5,000円〜（張り替えの平均）</td><td class="num">約12万〜20万円</td><td>置き敷き材の値段で上下する。見積もりは2〜3社</td></tr>
+  <table class="t mcard">
+    <tr class="hdr"><th>やり方</th><th class="num">1㎡あたり</th><th class="num">全体（約26㎡）</th><th>メモ</th></tr>
+    <tr><td>通販の「置くだけ」吸着タイル（自分で敷く）</td><td class="num" data-label="1㎡あたり">約2,500〜4,500円（仮定）</td><td class="num" data-label="全体（約26㎡）">約6.5万〜12万円</td><td data-label="メモ">一番安い。厚み・重さがある物ほどズレにくい</td></tr>
+    <tr><td>メーカーの置き敷き材（例：シンコール「置敷」）を自分で敷く</td><td class="num" data-label="1㎡あたり">約6,160円（税別5,600円）</td><td class="num" data-label="全体（約26㎡）">約16万円</td><td data-label="メモ">業務用の品質。東リ「ピタフィー」にもモルタル柄あり（価格は要確認）</td></tr>
+    <tr><td>業者に頼む（材料＋施工）</td><td class="num" data-label="1㎡あたり">約5,000円〜（張り替えの平均）</td><td class="num" data-label="全体（約26㎡）">約12万〜20万円</td><td data-label="メモ">置き敷き材の値段で上下する。見積もりは2〜3社</td></tr>
   </table>
   <p class="small">いまの床もグレーのモルタル調なので、その上に置き敷きして問題ないか（段差・ドアの開閉・凹凸）を内見時に確認。チェア（約66kg）の下はタイルの上でも傷防止マットを敷く。大家さんにも一言伝えておくと安心。</p>
 </div>
@@ -381,7 +412,7 @@
       <li><b>価格</b>：本体のみ 26,400円（白）。バッテリー・充電器付きのセットは別途</li>
       <li><b>音</b>：パワフルモード約66dB。お客様が目を閉じている施術中は使わず、施術と施術の間に</li>
     </ul>
-    <table class="t" style="margin-top:6px">
+    <table class="t kv" style="margin-top:6px">
       <tr><th>候補</th><th>向き・不向き</th></tr>
       <tr><td>マキタ CL286FD</td><td>◎ 軽い・丈夫・安い。31.5㎡ならこれで十分</td></tr>
       <tr><td>シャーク・ダイソン</td><td>○ 吸う力は強いが、重め・高め（31.5㎡には大きすぎる）</td></tr>
@@ -395,7 +426,7 @@
       <li><b>理由</b>：タオルがふんわり乾き、お客様に触れる質が上がる。乾燥中に次の洗濯を回せる。洗濯乾燥機1台より乾燥が速い</li>
       <li><b>費用の目安</b>：縦型8kg 約6.4万〜6.7万円（東芝 AW-8DH5・日立 BW-V80K）＋乾燥機 日立 DE-N60HV 約6.3万〜7.2万円＋専用スタンド＝<b>約14万円前後</b>（設置費は別）</li>
     </ul>
-    <table class="t" style="margin-top:6px">
+    <table class="t kv" style="margin-top:6px">
       <tr><th>候補</th><th>向き・不向き</th></tr>
       <tr><td>縦型＋衣類乾燥機</td><td>◎ 仕上がり・速さ・故障時に片方だけ替えられる</td></tr>
       <tr><td>縦型洗濯乾燥機（1台）</td><td>○ 置き場所が狭いならこちら。乾燥は時間がかかる</td></tr>

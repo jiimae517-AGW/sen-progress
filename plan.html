@@ -71,6 +71,28 @@
   .tl li.key:before{background:var(--warn)} .tl li.done:before{background:var(--done)}
   .tl .d{font-weight:700} .tl .x{font-size:13px;color:var(--sub)}
   .ok{color:#4d5f44;font-weight:700} .ng{color:#8a5524;font-weight:700}
+  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tscroll table.t{min-width:560px}
+  .scroll-hint{display:none;font-size:11px;color:var(--sub);margin:6px 0 6px}
+  @media (max-width:720px){
+    .wrap{padding:16px 12px 64px}
+    header h1{font-size:22px}
+    h2{font-size:16px;margin:28px 0 10px}
+    .big{font-size:15px;line-height:1.7}
+    .scroll-hint{display:block}
+    .num{white-space:normal}
+    .tscroll .num{white-space:nowrap}
+    table.t.kv th,table.t.kv td:first-child{width:34% !important;min-width:84px}
+    table.t.mcard,table.t.mcard tbody,table.t.mcard tr,table.t.mcard td{display:block;width:100% !important}
+    table.t.mcard thead,table.t.mcard tr.hdr{display:none}
+    table.t.mcard tr{border-bottom:2px solid var(--line);padding:10px 12px}
+    table.t.mcard tr:last-child{border-bottom:none}
+    table.t.mcard td{border-bottom:none;padding:3px 0;text-align:left !important;white-space:normal !important}
+    table.t.mcard td:first-child{font-weight:700;font-size:14px;padding-bottom:6px;margin-bottom:6px;border-bottom:1px dashed var(--line)}
+    table.t.mcard td:empty{display:none}
+    table.t.mcard td:not(:first-child)::before{content:attr(data-label);display:inline-block;font-size:11px;font-weight:700;color:var(--sub);background:#faf8f4;border:1px solid var(--line);border-radius:4px;padding:0 6px;margin-right:6px;vertical-align:1px}
+    nav.site a{font-size:12px;padding:4px 10px}
+  }
 </style></head>
 <body><div class="wrap">
 <header><div class="brand">sen ｜ Enjoy Life Forever ／ 千年先もきれいに</div><h1>計画の中身</h1>
@@ -113,19 +135,20 @@
 </div>
 
 <h2>来店の間隔（メニュー別）</h2>
-<div class="card" style="padding:0;overflow-x:auto">
-<table class="t">
-  <tr><th>メニュー</th><th>おすすめの間隔</th><th>早割</th><th>メモ</th></tr>
-  <tr><td>まつ毛パーマ</td><td>5〜7週（理想は6週前後）</td><td>―</td><td>来店ペースの基準</td></tr>
-  <tr><td>エクステ（通常グルー）</td><td>4週以内</td><td>○</td><td>扱いやすい</td></tr>
-  <tr><td>エクステ（LEDグルー）</td><td>6週以内</td><td>○</td><td>長持ちタイプ</td></tr>
-  <tr><td>アイブロウ（女性・薄め）</td><td>6週</td><td>―</td><td>パーマと同じ間隔でよい</td></tr>
-  <tr><td>アイブロウ（男性・濃いめ）</td><td>4週</td><td>―</td><td>理想は3週だが枠が取り切れないので4週で運用</td></tr>
+<div class="card" style="padding:0">
+<table class="t mcard">
+  <tr class="hdr"><th>メニュー</th><th>おすすめの間隔</th><th>早割</th><th>メモ</th></tr>
+  <tr><td>まつ毛パーマ</td><td data-label="おすすめの間隔">5〜7週（理想は6週前後）</td><td data-label="早割">―</td><td data-label="メモ">来店ペースの基準</td></tr>
+  <tr><td>エクステ（通常グルー）</td><td data-label="おすすめの間隔">4週以内</td><td data-label="早割">○</td><td data-label="メモ">扱いやすい</td></tr>
+  <tr><td>エクステ（LEDグルー）</td><td data-label="おすすめの間隔">6週以内</td><td data-label="早割">○</td><td data-label="メモ">長持ちタイプ</td></tr>
+  <tr><td>アイブロウ（女性・薄め）</td><td data-label="おすすめの間隔">6週</td><td data-label="早割">―</td><td data-label="メモ">パーマと同じ間隔でよい</td></tr>
+  <tr><td>アイブロウ（男性・濃いめ）</td><td data-label="おすすめの間隔">4週</td><td data-label="早割">―</td><td data-label="メモ">理想は3週だが枠が取り切れないので4週で運用</td></tr>
 </table>
 </div>
 
 <h2>価格案（ドラフト・未確定）</h2>
-<div class="card" style="padding:0;overflow-x:auto">
+<p class="scroll-hint">← 左右にスクロールできます</p>
+<div class="card" style="padding:0"><div class="tscroll">
 <table class="t">
   <tr><th>メニュー</th><th class="num">A案（今の路線）</th><th class="num">B案（コンセプト重視）</th><th class="num">C案（おすすめ候補）</th><th>間隔</th></tr>
   <tr><td>まつ毛パーマ</td><td class="num">7,500円</td><td class="num">9,000円</td><td class="num">9,000円</td><td>5〜7週</td></tr>
@@ -137,7 +160,7 @@
   <tr><td>アイブロウ 男性</td><td class="num">5,000円</td><td class="num">6,000円</td><td class="num">5,000円</td><td>4週</td></tr>
   <tr><td><b>想定の客単価</b></td><td class="num"><b>約7,200円</b></td><td class="num"><b>約8,500円</b></td><td class="num"><b>約8,000円</b></td><td></td></tr>
 </table>
-</div>
+</div></div>
 <p class="small">C案＝エクステ・パーマはB案の価格（コンセプトに合わせる）、アイブロウだけA案の価格（気軽に通える入口を残す）。税込。</p>
 <div class="grid g2">
   <div class="card"><b>セット（A案の例）</b>
@@ -183,7 +206,7 @@
 </div>
 <p class="small">元にした資料：計画ノート（コンセプト・メニュー・価格・売上目標・収益構造・協業）、ガントチャート（Google スプレッドシート）、行動計画書（Google ドキュメント）。元の資料は更新せず、このページを最新版として扱う。</p>
 
-<p style="margin-top:20px"><a href="index.html" style="font-weight:700;text-decoration:none;background:var(--accent-soft);padding:6px 12px;border-radius:8px;border:1px solid #cfd8c8">← 進捗ページに戻る</a>　<a href="subsidy.html" style="text-decoration:none;background:var(--card);padding:6px 12px;border-radius:8px;border:1px solid var(--line)">補助金・公庫ページを見る →</a></p>
+<div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap"><a href="index.html" style="font-weight:700;text-decoration:none;background:var(--accent-soft);padding:6px 12px;border-radius:8px;border:1px solid #cfd8c8">← 進捗ページに戻る</a><a href="subsidy.html" style="text-decoration:none;background:var(--card);padding:6px 12px;border-radius:8px;border:1px solid var(--line)">補助金・公庫ページを見る →</a></div>
 
 <footer>sen 開業準備（下書き）。価格・メニューは未確定のドラフトを含む。</footer>
 </div></body></html>
